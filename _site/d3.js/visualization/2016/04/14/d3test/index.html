@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Programming For Kettles</title>
+    <title>d3 chart example &#8211; Programming For Kettles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully).">
     <meta name="robots" content="all">
     <meta name="author" content="Iulian Gulea">
-    
-    <link rel="canonical" href="http://iulian4ik.github.io/404.html">
+    <meta name="keywords" content="d3.js, visualization">
+    <link rel="canonical" href="http://iulian4ik.github.io/d3.js/visualization/2016/04/14/d3test/">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for Programming For Kettles" href="/feed.xml" />
 
     <!-- Custom CSS -->
@@ -34,9 +34,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Programming For Kettles">
+    <meta property="og:title" content="d3 chart example">
     <meta property="og:description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully).">
-    <meta property="og:url" content="http://iulian4ik.github.io/404.html">
+    <meta property="og:url" content="http://iulian4ik.github.io/d3.js/visualization/2016/04/14/d3test/">
     <meta property="og:site_name" content="Programming For Kettles">
 
     <!-- Twitter Card -->
@@ -44,9 +44,9 @@
     
         <meta name="twitter:site" content="@iulian4ik" />
     
-    <meta name="twitter:title" content="Programming For Kettles" />
+    <meta name="twitter:title" content="d3 chart example" />
     <meta name="twitter:description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully)." />
-    <meta name="twitter:url" content="http://iulian4ik.github.io/404.html" />
+    <meta name="twitter:url" content="http://iulian4ik.github.io/d3.js/visualization/2016/04/14/d3test/" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -79,8 +79,10 @@
 </head>
 
 <body class="site">
-    
-  <div class="site-wrap center">
+  
+	
+
+  <div class="site-wrap">
     <header class="site-header px2 px-responsive">
   <div class="mt2 wrap">
     <div class="measure">
@@ -164,14 +166,55 @@
 
     <div class="post p2 p-responsive wrap" role="main">
       <div class="measure">
-        <h1 id="section">404</h1>
+        
 
-<p>Sorry, we can’t seem to find this page’s pixylls.</p>
 
-<div class="mt3">
-  <a href="/" class="button button-blue button-big">Home</a>
-  <a href="/contact/" class="button button-blue button-big">Contact</a>
+<div class="post-header mb2">
+  <h1>d3 chart example</h1>
+  <span class="post-meta">Apr 14, 2016</span><br>
+  
+  <span class="post-meta small">
+  
+    1 minute read
+  
+  </span>
 </div>
+
+<article class="post-content">
+  <p>This is a page with an example of how to insert <code class="highlighter-rouge">d3.js</code> charts into a jekyll blog.</p>
+
+<div id="resumalize"></div>
+
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="http://iulian4ik.github.io/assets/javascripts/resumalize.js"></script>
+
+
+</article>
+
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'iulian4ik';
+    var disqus_identifier = '/d3.js/visualization/2016/04/14/d3test';
+    var disqus_title      = 'd3 chart example';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
 
       </div>
     </div>
