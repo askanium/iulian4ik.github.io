@@ -1,0 +1,62 @@
+.bookster-wrapper {
+    font-size: 0;
+}
+
+.b-5, .b-4, .b-3, .b-2, .b-1,
+.b0, .b1, .b2, .b3, .b4, .b5 {
+    content: '';
+    content: none;
+    font-size: 0;
+    line-height: 1;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.b-5 {
+    background-color: #b71c1c;
+}
+.b-4 {
+    background-color: #d32f2f;
+}
+.b-3 {
+    background-color: #f44336;
+}
+.b-2 {
+    background-color: #e57373;
+}
+.b-1 {
+    background-color: #ffcdd2;
+}
+.b0 {
+    background-color: #FFFFFF;
+}
+.b1 {
+    background-color: #dcedc8;
+}
+.b2 {
+    background-color: #aed581;
+}
+.b3 {
+    background-color: #8bc34a;
+}
+.b4 {
+    background-color: #689f38;
+}
+.b5 {
+    background-color: #33691e;
+}
+
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
