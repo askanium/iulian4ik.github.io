@@ -5,15 +5,15 @@ categories: design-patterns
 ---
 ##Intent
 
-**Singleton Pattern** is a _creational pattern_ that assures there is only one instance of an object in your program and its creation can be delayed upon when it is needed.
+**Singleton Pattern** is a _creational pattern_ that assures there is only one instance of an object in your program so that when many different parts of your code want to access the singleton, all of them operate on the same object.
 
 ##When to use it
 
-Whenever you need an object to exist only _in one instance_, to be _unique,_ or when different parts of your application try to access an object concurrently, consider using a Singleton Pattern.
+Whenever you need an object to exist only _in one instance_, to be _unique,_ or when different parts of your application try to access an object concurrently, or when you need to manage a shared resource, consider using a Singleton Pattern.
 
 ##Specific example
 
-In the Middle-Earth, one of the things that are unique is the _One Ring._ There is no other ring with such power in it (and a part of the Sauron's soul) and we must assure ourselves that we don't accidentally create another ring when trying to obtain the ring (otherwise, each and every being in Middle-Earth would find out what the bug is and create their own Rings of Power and bad things will happen).
+In the Middle-Earth, one of the things that are unique is the _One Ring._ There is no other ring with such power in it (and a part of the Sauron's soul) and it can have exactly one bearer. Thus we must assure ourselves that we don't accidentally create another ring when trying to obtain the ring (otherwise, each and every being in Middle-Earth would find out what the bug is and create their own Rings of Power and bad things will happen).
 
 ##Implementation without pattern
 
@@ -21,11 +21,11 @@ Without the Singleton Pattern, each time we would need to get the OneRing object
 
 ##Implementation using Prototype Pattern
 
-Using the Singleton Pattern, the way that we ask for the object instance does not let us create duplicates. We don't have access to the Ring directly, but we ask for it from the Singleton.
+Using the Singleton Pattern, the way that we ask for the object instance does not let us create duplicates. We don't have access to the Ring directly, but we obtain it from the Singleton.
 
 ##Pattern components
 
-
+TBD
 
 ##JavaScript implementation
 
@@ -76,32 +76,41 @@ console.log(theRingOfPower === myPretious);  // true
 
 ##Python implementation
 
-In Python we have a similar structure.
+There are many ways in which to implement a Singleton Pattern in Python. As an example we will use a subclass to implement it.
 
 {% highlight python lineanchors %}
 class TheOneRing:
-	
-	class TheRingOfPower:
-		def __init__(self, holder):
-			self.holder = holder
+    
+    class TheRingOfPower:
+        def __init__(self):
+            self.holder = None
 
-		def __str__(self):
-			holder = 'nobody' if self.holder is None else self.holder
-			return 'The Ring of Power is held by {}'.format(holder)
+        def set_holder(self, holder):
+            self.holder = holder
+        
+    __ring = None
 
-	ring = None
-
-	def __init__(self, holder=None):
-		if TheOneRing.ring is None:
-			TheOneRing.ring = TheOneRing.TheRingOfPower(holder)
-		else:
-			TheOneRing.ring.holder = holder
-
-	def __getattr__(self, name):
-		return getattr(self.ring, name)
+    def __str__(self):
+        holder = 'nobody' if self.holder is None else self.holder
+        return 'The Ring of Power is held by {}.'.format(holder)
+        
+    @classmethod
+    def get_ring(cls):
+        if not cls.__ring:
+            cls.__ring = cls.TheRingOfPower()
+        return cls.__ring
 {% endhighlight %}
 
+Now, whenever we need The Ring, we just initialize an instance of `TheOneRing` class, which checks whether there exists an instance of the ring already and if not, creates it.
+
 {% highlight python lineanchors %}
+my_precious = TheOneRing.get_ring()
+my_precious.set_holder('Golum')
+
+the_ring_of_power = TheOneRing.get_ring()
+
+print(the_ring_of_power)  # The Ring of Power is held by Golum.
+print(id(the_ring_of_power) == id(my_pretious))  # True
 {% endhighlight %}
 
 {% highlight python lineanchors %}
@@ -109,17 +118,20 @@ class TheOneRing:
 
 ##Advantages
 
-- Simple implementation
-- Lazy initialization
+- Simple implementation. It is one of the simplest patterns to implement.
+- Lazy initialization. The singleton can be initialized on demand and not necessarily at the start of your program.
 
 ##Disadvantages
 
-
+- Singletons can become (most of them do) what is known as a _glorified global variable_ (a variable that knows and can do too much things)
+- If not implemented properly and if the Singleton participates in business logic, bad things can happen, because several instances of the Singleton can be created that are not synchronized, thus affecting the flow of your code.
 
 ##Real world usage examples
 
-
+- One of the most popular examples of using a Singleton is the logger.
+- Configuration settings of a project might be used as Singletons, although they simply can be passed on initialization in functions that need them and thus eliminating the need of the Singleton.
+- In web development, a menu object can be used as a Singleton, so that any change made on it, or any state it takes becomes available from anywhere.
 
 ##Things to consider
 
-Some do not like it, because it overpowers the singleton.
+There are actually very few "acceptable" cases to use a Singleton. More and more developers become *** about the Singleton pattern. In most cases it doesn't bring any added value, because the task it tries to solve can be achieved by restructuring the code and thus not having a global variable. (WHY global variables are bad link here).
