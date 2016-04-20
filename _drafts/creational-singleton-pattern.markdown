@@ -33,25 +33,25 @@ In JavaScript, a Singleton can be implemented using closures.
 
 {% highlight javascript lineanchors %}
 function TheRingOfPower (holder) {  // Constructor for The Ring
-	this.holder = holder;  // If no holder is provided, the Ring will have `undefined` holder.
-	this.setHolder = function (holder) {
-		this.holder = holder;
-	}
+    this.holder = holder;  // If no holder is provided, the Ring will have `undefined` holder.
+    this.setHolder = function (holder) {
+    	this.holder = holder;
+    }
 }
 
 var TheOneRing = (function () {
-	var theOneRing = null;
+    var theOneRing = null;
 
-	function getRing () {
-		if ( theOneRing === null ) {
-			theOneRing = new TheRingOfPower();
-		}
-		return theOneRing;
-	}
+    function getRing () {
+    	if ( theOneRing === null ) {
+            theOneRing = new TheRingOfPower();
+    	}
+    	return theOneRing;
+    }
 
-	return {
-		getRing: getRing
-	};
+    return {
+    	getRing: getRing
+    };
 })();
 {% endhighlight %}
 
