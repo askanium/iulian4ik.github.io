@@ -127,7 +127,7 @@ Here, [id()](https://docs.python.org/3/library/functions.html#id) returns the id
 
 - Singletons can become (most of them do) what is known as a _glorified global variable_ (a variable that knows and can do too much things)
 - If not implemented properly and if the Singleton participates in business logic, bad things can happen, because several instances of the Singleton can be created that are not synchronized, thus affecting the flow of your code.
-- One very useful concept in programming is Dependency Injection. But Singleton Pattern hides the dependencies of the object, because it is accessible from global state (you can, of course, inject it into the functions that need it though)
+- Dependency Injection Pattern is a very useful pattern, but Singleton Pattern hides the dependencies of the object, because it is accessible from global state and you will need to scan the whole code of your function to check whether a function uses the Singleton or not (you can, of course, inject it into the functions that need it though, thus alleviating the negative impact it has on hiding dependencies)
 
 ##Real world usage examples
 
