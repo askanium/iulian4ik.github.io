@@ -5,11 +5,11 @@ categories: design-patterns
 ---
 ##Intent
 
-**Singleton Pattern** is a _creational pattern_ that assures there is only one instance of an object in your program so that when many different parts of your code want to access the singleton, all of them operate on the same object.
+**Singleton Pattern** is a _creational pattern_ that assures there is only one instance of an object in your program so that when many different parts of your code want to access it, all of them operate on the same object.
 
 ##When to use it
 
-Whenever you need an object to exist only _in one instance_, to be _unique,_ or when different parts of your application try to access an object concurrently, or when you need to manage a shared resource, consider using a Singleton Pattern.
+Whenever you need an object to exist only _in one instance_, to be _unique,_ or when different parts of your application try to access an object concurrently **and** this object is a shared resource, consider using a Singleton Pattern.
 
 ##Specific example
 
@@ -113,6 +113,8 @@ print(the_ring_of_power)  # The Ring of Power is held by Golum.
 print(id(the_ring_of_power) == id(my_pretious))  # True
 {% endhighlight %}
 
+Here, [id()](https://docs.python.org/3/library/functions.html#id) returns the identity of an object, which is an unique integer that is constant for the object for its whole lifetime. In the example above, both variables have the same id, meaning it is the same object actually.
+
 {% highlight python lineanchors %}
 {% endhighlight %}
 
@@ -125,13 +127,18 @@ print(id(the_ring_of_power) == id(my_pretious))  # True
 
 - Singletons can become (most of them do) what is known as a _glorified global variable_ (a variable that knows and can do too much things)
 - If not implemented properly and if the Singleton participates in business logic, bad things can happen, because several instances of the Singleton can be created that are not synchronized, thus affecting the flow of your code.
+- One very useful concept in programming is Dependency Injection. But Singleton Pattern hides the dependencies of the object, because it is accessible from global state (you can, of course, inject it into the functions that need it though)
 
 ##Real world usage examples
 
-- One of the most popular examples of using a Singleton is the logger.
-- Configuration settings of a project might be used as Singletons, although they simply can be passed on initialization in functions that need them and thus eliminating the need of the Singleton.
+- One of the most popular examples of using a Singleton is the logger. There should be only one log file that should be opened, wrote to, read from and closed properly, and when different parts of your code are trying to access it simultaneously, you need to assure that all of them operate on the same file.
 - In web development, a menu object can be used as a Singleton, so that any change made on it, or any state it takes becomes available from anywhere.
 
 ##Things to consider
 
-There are actually very few "acceptable" cases to use a Singleton. More and more developers become *** about the Singleton pattern. In most cases it doesn't bring any added value, because the task it tries to solve can be achieved by restructuring the code and thus not having a global variable. (WHY global variables are bad link here).
+There's a lot of debate around the usage of Singleton Pattern. In most cases it doesn't bring any added value, because the task it tries to solve can be achieved by restructuring the code and thus not having/needing a global variable. (WHY global variables are bad link here). There are actually very few "acceptable" cases to use a Singleton, and when you found yourself in the situation that you need to have one instance only of something that will be accessed from different parts of your code, consider using the Singleton Pattern.
+
+##Additional resources
+
+- [[StackOverflow] On Design Patterns: When to use the Singleton?](http://stackoverflow.com/questions/228164/on-design-patterns-when-to-use-the-singleton)
+- [[StackOverflow] What is so bad about singletons?](http://stackoverflow.com/questions/137975/what-is-so-bad-about-singletons)
