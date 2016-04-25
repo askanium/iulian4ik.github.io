@@ -760,8 +760,8 @@ function updateChart(dataPoints) {
             var d = this.__data__;
             var idx = +$(this).attr("id").substring(3)+1;
             var tipsyInnerHTML = '<span class="bold">'+d.label+'</span><br/>'+
-            '<span>x - '+$('input[name=series1_'+idx+']').val()+'</span><br/>'+
-            '<span>y - '+$('input[name=series2_'+idx+']').val()+'</span><br/>'+
+            '<span>x: '+$('input[name=series1_'+idx+']').val()+'</span><br/>'+
+            '<span>y: '+$('input[name=series2_'+idx+']').val()+'</span><br/>'+
             '<div class="clear"></div>';
             return tipsyInnerHTML; 
         }
