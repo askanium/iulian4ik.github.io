@@ -4,9 +4,9 @@ title: Scatterplot with marginal ticks
 categories: visualization d3.js
 ---
 
-This is one of my first charts made in d3.js. And it was made long before I knew what a scatterplot with marginal ticks is.
+This is among the first charts made in d3.js. And it was made long before I knew what a scatterplot with marginal ticks is.
 
-The code for it was written ~5 years ago and I didn't revise it, so there should be space for improvement. 
+The code for it was written ~4 years ago and I didn't revise it, so there should be space for improvement. 
 
 Initially, the chart took input data from the table below and sent it to a remote endpoint for processing. After processing, the segmented data returned and was visualized in the chart. However, for demonstration purpose, I've refactored it a bit to make all the computations inplace. 
 
