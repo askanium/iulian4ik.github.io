@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Prototype Pattern &#8211; Programming For Kettles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully).">
+    <meta name="robots" content="all">
+    <meta name="author" content="Iulian Gulea">
+    <meta name="keywords" content="design-patterns">
+    <link rel="canonical" href="http://iulian4ik.github.io/design-patterns/2016/04/20/creational-prototype-pattern/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Programming For Kettles" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201604201801" type="text/css">
+    <link rel="stylesheet" href="/css/styles.css?201604201801" type="text/css">
+
+    <!-- Fonts -->
+    
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+    
+
+    <!-- MathJax -->
+    
+
+    <!-- Verifications -->
+    
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Prototype Pattern">
+    <meta property="og:description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully).">
+    <meta property="og:url" content="http://iulian4ik.github.io/design-patterns/2016/04/20/creational-prototype-pattern/">
+    <meta property="og:site_name" content="Programming For Kettles">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@iulian4ik" />
+    
+    <meta name="twitter:title" content="Prototype Pattern" />
+    <meta name="twitter:description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully)." />
+    <meta name="twitter:url" content="http://iulian4ik.github.io/design-patterns/2016/04/20/creational-prototype-pattern/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    <script>window.BASEURL = "";</script>
+
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-76433646-1', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body class="site">
+  
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://iulian4ik.github.io" class="site-title">Programming For Kettles</a>
+      <nav class="site-nav">
+        
+    
+
+    
+
+    
+
+    
+        <a href="/about/">About</a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="/bookster/">Bookster</a>
+    
+
+    
+
+    
+        <a href="/contact/">Say Hello</a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Prototype Pattern</h1>
+  <span class="post-meta">Apr 20, 2016</span><br>
+  
+  <span class="post-meta small">
+  
+    6 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <h2 id="intent">Intent</h2>
+
+<p><strong>Prototype Pattern</strong> is a <em>creational pattern</em> that provides the possibility to easily obtain a duplicate of an object based on a given prototype.</p>
+
+<h2 id="when-to-use-it">When to use it</h2>
+
+<p>Whenever you need to generate copies of similar simple or complex objects in your projects, consider using a Prototype Pattern.</p>
+
+<h2 id="specific-example">Specific example</h2>
+
+<p>Have you ever wondered how Sauron created his mighty Orc army? I believe the used some sort of magical type of the Prototype Pattern. He doesn’t need each Orc to have a personality, he needs many copies of several types of strong warriors that can fight. Suppose we serve the Dark side and we need to create a fast and simple way to create 3 types of orcs: <a href="http://lotr.wikia.com/wiki/Uruk-hai_Scouts"><em>Uruk Scout</em></a>, <a href="http://lotr.wikia.com/wiki/Uruk-hai_Pikeman"><em>Uruk Pikeman</em></a> and <a href="http://lotr.wikia.com/wiki/Berserkers"><em>Uruk-hai berserker</em></a> Let’s see how the Prototype Pattern can help us in this situation.</p>
+
+<h2 id="implementation-without-pattern">Implementation without pattern</h2>
+
+<p>Without the Prototype Pattern, there are mainly 2 possibilities:</p>
+
+<ul>
+  <li>create 3 separate classes for each type of warrior we need, all of which would inherit from an <code class="highlighter-rouge">UrukHai</code> class and create warriors of each class separately.</li>
+  <li>create only one <code class="highlighter-rouge">UrukHai</code> class and create different types of warriors by providing different parameters to the class on initialization.</li>
+</ul>
+
+<h2 id="implementation-using-prototype-pattern">Implementation using Prototype Pattern</h2>
+
+<p>The key in implementing a Prototype Pattern is to have a possibility to clone existing objects. Thus, we would have 3 objects that would represent a scout, a pikeman and a berserker that could clone themselves on demand.</p>
+
+<p>Alternatively, we could have a pool of available prototypes from which we could select which type of warrior we would like to clone.</p>
+
+<h2 id="pattern-components">Pattern components</h2>
+
+<p>TBD</p>
+
+<h2 id="javascript-implementation">JavaScript implementation</h2>
+
+<p>JavaScript itself is a prototype based language, meaning that inheritance is performed by cloning existing objects that serve as prototypes. This makes the usage of prototype pattern in Javascript easier, as the language itself facilitates pattern’s underlying concepts.</p>
+
+<p>To demonstrate the prototypal nature of JavaScript, we won’t use any constructor in order to implement the pattern. Instead we would create a warrior using <del>object literal</del> dark magic. Let’s create a simple Uruk-Hai first.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">urukHai</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">weight</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>  <span class="c1">// in kg</span>
+    <span class="na">weapon</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+    <span class="na">armor</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+    <span class="na">attackSpeed</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="na">maxSpeed</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>  <span class="c1">// in km/h</span>
+    <span class="na">currentSpeed</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">run</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentSpeed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">maxSpeed</span><span class="p">;</span> <span class="p">},</span>  <span class="c1">// abilities</span>
+    <span class="na">attack</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">'Arghghghghg!!!!!'</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>In order to obtain a cloned urukHai, in JavaScript we can use <code class="highlighter-rouge">Object.create</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">urukHaiClone</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">urukHai</span><span class="p">);</span></code></pre></figure>
+
+<p>And that’s all you need in order to obtain a clone in JavaScript that inherits everything from its parent object. But let’s go further and define the <code class="highlighter-rouge">create</code> method on the prototype itself.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">urukHai</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">newProps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">newProps</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="nx">newProps</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">prop</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nx">clone</span><span class="p">[</span><span class="nx">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nx">newProps</span><span class="p">[</span><span class="nx">prop</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">clone</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">urukHaiScout</span> <span class="o">=</span> <span class="nx">urukHai</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="na">armor</span><span class="p">:</span> <span class="s1">'light'</span><span class="p">,</span> 
+    <span class="na">weapon</span><span class="p">:</span> <span class="s1">'light sword'</span><span class="p">,</span>
+    <span class="na">disguiseLevel</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+    <span class="na">maxSpeed</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="na">scout</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">disguiseLevel</span> <span class="o">=</span> <span class="s1">'high'</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">currentSpeed</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">attack</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">disguiseLevel</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">;</span> 
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">'Arghghghghg!!!!!'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urukHaiScout</span><span class="p">.</span><span class="nx">weight</span><span class="p">);</span>    <span class="c1">// 50</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urukHaiScout</span><span class="p">.</span><span class="nx">maxSpeed</span><span class="p">);</span>  <span class="c1">// 10</span></code></pre></figure>
+
+<p>In the code above, besides cloning the prototype, we implemented the possibility to override some of the clone’s properties and/or methods. This can come in handy when we need a duplicate of a complex object with most of its structure the same and only a few properties different.</p>
+
+<p>Now, let’s create a warriors <strong>Prototype Manager</strong> that can create different warriors on demand. A Prototype Manager is useful when a number of prototypes is dynamic. Suppose that Sauron might want to slightly modify an existing prototype and clone the newly created warrior as well as the existing warrior. We do not know beforehand what warriors might serve as prototypes, but we can provide an interface for Sauron to register warriors as prototypes.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">orcWarriorPrototypeManager</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">prototypes</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">register</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">identifier</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">prototypes</span><span class="p">[</span><span class="nx">identifier</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span> 
+    <span class="p">},</span>
+    <span class="na">unregister</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">identifier</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">delete</span> <span class="k">this</span><span class="p">[</span><span class="nx">identifier</span><span class="p">];</span> 
+    <span class="p">},</span>
+    <span class="na">create</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">identifier</span><span class="p">,</span> <span class="nx">propertiesToUpdate</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">propertiesToUpdate</span> <span class="o">=</span> <span class="nx">propertiesToUpdate</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">prototypes</span><span class="p">[</span><span class="nx">identifier</span><span class="p">]</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// If there is no such identifier, throw an error.</span>
+            <span class="k">throw</span> <span class="s1">'No such warrior prototype'</span><span class="p">;</span>
+        <span class="p">}</span> 
+        <span class="kd">var</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">prototypes</span><span class="p">[</span><span class="nx">identifier</span><span class="p">]);</span>
+        <span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">propertiesToUpdate</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="nx">propertiesToUpdate</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">prop</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="nx">clone</span><span class="p">[</span><span class="nx">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nx">propertiesToUpdate</span><span class="p">[</span><span class="nx">prop</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">clone</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Register `urukHai` and `urukHaiScout` as a prototype</span>
+<span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'urukHai'</span><span class="p">,</span> <span class="nx">urukHai</span><span class="p">);</span>
+<span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'urukHaiScout'</span><span class="p">,</span> <span class="nx">urukHaiScout</span><span class="p">);</span>
+
+<span class="c1">// Clone the existing Uruk-Hai and transform it into a Pikeman.</span>
+<span class="kd">var</span> <span class="nx">urukHaiPikeman</span> <span class="o">=</span> <span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'urukHai'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">weight</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="na">armor</span><span class="p">:</span> <span class="s1">'heavy'</span><span class="p">,</span>
+    <span class="na">weapon</span><span class="p">:</span> <span class="s1">'pike'</span><span class="p">,</span>
+    <span class="na">maxSpeed</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="p">??????????</span><span class="nx">assault</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{}</span>
+<span class="p">});</span>
+
+<span class="c1">// Register our `urukHaiPikeman` as a prototype</span>
+<span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'urukHaiPikeman'</span><span class="p">,</span> <span class="nx">urukHaiPikeman</span><span class="p">);</span>
+
+<span class="c1">// Create a berserker prototype</span>
+<span class="kd">var</span> <span class="nx">urukHaiBerserker</span> <span class="o">=</span> <span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'urukHai'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">weight</span><span class="p">:</span> <span class="mi">136</span><span class="p">,</span>
+    <span class="na">weapon</span><span class="p">:</span> <span class="s1">'a huge sword with a five-foot blade and a foot-long double spike at the end'</span><span class="p">,</span>
+    <span class="na">maxSpeed</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="na">enrage</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">maxSpeed</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">attackSpeed</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Register our `urukHaiBerserker` as a prototype</span>
+<span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'urukHaiBerserker'</span><span class="p">,</span> <span class="nx">urukHaiBerserker</span><span class="p">);</span></code></pre></figure>
+
+<p>Now, whenever we would like to create any of the three types of warriors, we can use the Prototype Manager.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'urukHaiScout'</span><span class="p">);</span>      <span class="c1">// Creates a scout</span>
+<span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'urukHaiPikeman'</span><span class="p">);</span>    <span class="c1">// Creates a pikeman</span>
+<span class="nx">orcWarriorPrototypeManager</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'urukHaiBerserker'</span><span class="p">);</span>  <span class="c1">// Creates a berserker</span></code></pre></figure>
+
+<h2 id="python-implementation">Python implementation</h2>
+
+<p>In Python, we can obtain a clone of an object using the <a href="https://docs.python.org/3.1/library/copy.html"><code class="highlighter-rouge">copy</code></a> module. <code class="highlighter-rouge">copy.deepcopy()</code> creates a deep copy and <code class="highlighter-rouge">copy.copy()</code> creates a shallow copy. Which one to choose depends on what you are trying to achieve. As a simple explanation of shallow vs deep copy, check out this SO <a href="http://stackoverflow.com/a/17246744/3120525">answer</a>. For our purpose, a shallow copy will be enough.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">UrukHai</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">weapon</span><span class="p">,</span> <span class="n">max_speed</span><span class="p">,</span> <span class="n">attack_speed</span><span class="p">,</span> <span class="o">**</span><span class="n">other</span><span class="p">):</span>
+        <span class="s">'''Other might be: disguise, armor, etc.'''</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="n">weapon</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_speed</span> <span class="o">=</span> <span class="n">max_speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack_speed</span> <span class="o">=</span> <span class="n">attack_speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">mylist</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">ordered</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ordered</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'{}: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ordered</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s">'price'</span><span class="p">:</span>
+                <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'$'</span><span class="p">)</span>
+            <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span></code></pre></figure>
+
+<p>And the Prototype Manager:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">PrototypeManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prototypes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prototypes</span><span class="p">[</span><span class="n">identifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="nf">unregister</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">prototypes</span><span class="p">[</span><span class="n">identifier</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+        <span class="n">prototype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prototype</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">KeyError</span><span class="p">(</span><span class="s">'Incorrect prototype identifier: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">identifier</span><span class="p">))</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">prototype</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span></code></pre></figure>
+
+<h2 id="advantages">Advantages</h2>
+
+<ul>
+  <li>
+    <p>It can greatly reduce the number of required classes for generating similar objects with slight differences (e.g. an Uruk-Hai class instead of 3 classes for Scout, Pikeman and Berserker).</p>
+  </li>
+  <li>
+    <p>The cloned object inherits references to existing functions from the prototype, thus optimizing memory usage and boosting performance.</p>
+  </li>
+  <li>
+    <p>Possibility to dynamically add prototypes to clone from.</p>
+  </li>
+</ul>
+
+<h2 id="disadvantages">Disadvantages</h2>
+
+<ul>
+  <li>For simple objects with few differences the Prototype Pattern is not worth the effort and will overcomplicate things.</li>
+</ul>
+
+<h2 id="real-world-usage-examples">Real world usage examples</h2>
+
+<p>As it is a creational pattern and as nowadays humanity creates information in tremendous volumes, this pattern can be used whenever there’s a need to create instances of different objects. Some examples:</p>
+
+<ul>
+  <li>When creating a company structure with its shops and other entities, each of which has some shared values (e.g. shops in the same city have the same City, Company and Department)</li>
+  <li>When on your mobile phone you want to send someone a message based on a predefined template, you can register those templates (“Will call you later.”, “Can’t talk right now.”, etc.) as prototypes that can be cloned.</li>
+</ul>
+
+<h2 id="things-to-consider">Things to consider</h2>
+
+<ul>
+  <li>
+    <p>In JavaScript you can pass as a second argument to <code class="highlighter-rouge">Object.create</code> an object with properties settings. You can make some properties configurable, enumerable or writable. For instance we would like to restrict changing the weapon of an Uruk-Hai Pikeman, because, after all, a pikeman without a pike won’t be a pikeman.</p>
+  </li>
+  <li>
+    <p>There are 2 modalities of cloning (not only in Python): shallow and deep cloning. Sometimes you would like to use one over the other.</p>
+  </li>
+</ul>
+
+</article>
+
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'programming-for-kettles';
+    var disqus_identifier = '/design-patterns/2016/04/20/creational-prototype-pattern';
+    var disqus_title      = 'Prototype Pattern';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      Theme crafted with &lt;3 by <a href="http://johnotander.com">John Otander</a> (<a href="https://twitter.com/4lpine">@4lpine</a>).<br>
+      &lt;/&gt; available on <a href="https://github.com/johnotander/pixyll">Github</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>

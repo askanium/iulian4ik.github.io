@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Abstract Factory Pattern &#8211; Programming For Kettles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully).">
+    <meta name="robots" content="all">
+    <meta name="author" content="Iulian Gulea">
+    <meta name="keywords" content="design-patterns">
+    <link rel="canonical" href="http://iulian4ik.github.io/design-patterns/2016/04/27/creational-abstract-factory-pattern/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Programming For Kettles" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201604271747" type="text/css">
+    <link rel="stylesheet" href="/css/styles.css?201604271747" type="text/css">
+
+    <!-- Fonts -->
+    
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+    
+
+    <!-- MathJax -->
+    
+
+    <!-- Verifications -->
+    
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Abstract Factory Pattern">
+    <meta property="og:description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully).">
+    <meta property="og:url" content="http://iulian4ik.github.io/design-patterns/2016/04/27/creational-abstract-factory-pattern/">
+    <meta property="og:site_name" content="Programming For Kettles">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@iulian4ik" />
+    
+    <meta name="twitter:title" content="Abstract Factory Pattern" />
+    <meta name="twitter:description" content="Programming and Data Science concepts explained in a simple and clear manner (hopefully)." />
+    <meta name="twitter:url" content="http://iulian4ik.github.io/design-patterns/2016/04/27/creational-abstract-factory-pattern/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    <script>window.BASEURL = "";</script>
+
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-76433646-1', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body class="site">
+  
+	
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://iulian4ik.github.io" class="site-title">Programming For Kettles</a>
+      <nav class="site-nav">
+        
+    
+
+    
+
+    
+
+    
+        <a href="/about/">About</a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="/bookster/">Bookster</a>
+    
+
+    
+
+    
+        <a href="/contact/">Say Hello</a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Abstract Factory Pattern</h1>
+  <span class="post-meta">Apr 27, 2016</span><br>
+  
+  <span class="post-meta small">
+  
+    5 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <h2 id="intent">Intent</h2>
+
+<p><strong>Abstract Factory</strong> provides an interface for creating families of related objects without specifying their specific classes.</p>
+
+<h2 id="when-to-use-it">When to use it</h2>
+
+<p>Whenever you need to create different type of objects that are united by a common theme, that have similar behaviour and functionality.</p>
+
+<h2 id="specific-example">Specific example</h2>
+
+<p>In Middle-Earth, there are many races: Elves, Orcs, Maiar, Dwarves, Humans, and many-many others. Suppose now that we need to be able to create warriors of different races (Dwarfs, Elves, Human) to fight against Sauron. A “warrior” is the common theme for all these objects, that can fight, show off and prepare his weapon for battle, but yet each race’s warrior is different.</p>
+
+<h2 id="implementation-without-pattern">Implementation without pattern</h2>
+
+<p>Without the Abstract Factory Pattern, we will have a class for each type of warrior that will create warriors of specific types with their own characteristics, attributes and methods. We will need to know how to “operate” with each type of warrior in order to succeed in the battle.</p>
+
+<h2 id="implementation-using-abstract-factory-pattern">Implementation using Abstract Factory Pattern</h2>
+
+<p>Using the pattern, we will have an <code class="highlighter-rouge">AbstractFactory</code> defined that will know how to create different types of warriors and we will have a common interface for all types of warriors that will define <em>how</em> the warriors can behave. The AbstractFactory that builds warriors and the AbstractWarrior interface that defines how the warriors behave are two key elements in implementing the Abstract Factory Pattern. Let’s see what are the components and specific examples to make things more clear.</p>
+
+<h2 id="pattern-components">Pattern components</h2>
+
+<h2 id="javascript-implementation">JavaScript implementation</h2>
+
+<p>In statically-typed languages such as Java, the abstract classes and interfaces enforce consistency in derived classes. In JavaScript there is no support for class-based inheritance, therefore the AbstractFactory and AbstractWarrior classes are absent in the implementation of this pattern. But because JavaScript is a dynamically-typed language, we have <a href="https://en.wikipedia.org/wiki/Duck_typing">duck typing</a> to help us implement the Abstract Factory Pattern. We will have to assure that the factories that generate warriors as well as the warriors that are to be generated will have that consistency that in Java is achieved using abstract classes and interfaces. This means that we need to take care that all our factories and types of warriors have the same methods defined on them.</p>
+
+<p>Let’s define the Human, Elves and Dwarves warriors and their corresponding factories.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">HumanWarrior</span> <span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="nx">weapon</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">race</span> <span class="o">=</span> <span class="s1">'human'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">armor</span> <span class="o">=</span> <span class="nx">armor</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">weapon</span> <span class="o">=</span> <span class="nx">weapon</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">prepareWeapon</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'The human warrior stretches, grabs his mighty '</span> 
+            <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">weapon</span> <span class="o">+</span> <span class="s1">', smiles at it and is ready to fight.'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">attack</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'- For honor!'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">DwarfWarrior</span> <span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="nx">weapon</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">race</span> <span class="o">=</span> <span class="s1">'dwarf'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">armor</span> <span class="o">=</span> <span class="nx">armor</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">weapon</span> <span class="o">=</span> <span class="nx">weapon</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">prepareWeapon</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'The dwarf takes his '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">weapon</span> 
+            <span class="o">+</span> <span class="s1">', swings it several times and starts looking for the enemy to attack.'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">attack</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'- For Durin!'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">ElfWarrior</span> <span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="nx">weapon</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">race</span> <span class="o">=</span> <span class="s1">'elf'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">armor</span> <span class="o">=</span> <span class="nx">armor</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">weapon</span> <span class="o">=</span> <span class="nx">weapon</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">prepareWeapon</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'The elf takes his '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">weapon</span> 
+            <span class="o">+</span> <span class="s1">' and is ready to fight.'</span><span class="p">);</span>  <span class="c1">// What strict to the point elves are they!</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">attack</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'- Gurth enin goth!'</span><span class="p">);</span>  <span class="c1">// Death to the enemy! </span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">HumanWarriorFactory</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">train</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">armor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">HumanWarrior</span><span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="s1">'sword'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">DwarfWarriorFactory</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">train</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">armor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DwarfWarrior</span><span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="s1">'axe'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">ElfWarriorFactory</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">train</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">armor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">ElfWarrior</span><span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="s1">'long sword'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">ElfArcherFactory</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">train</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">armor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">ElfWarrior</span><span class="p">(</span><span class="nx">armor</span><span class="p">,</span> <span class="s1">'bow'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now, in order to make use of your implementation, we need to call the constructors of our factories, that in turn will generate instances of warriors for us.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">warriors</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">humanWarriorFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HumanWarriorFactory</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">dwarfWarriorFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DwarfWarriorFactory</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">elfWarriorFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ElfWarriorFactory</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">elfArcherFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ElfArcherFactory</span><span class="p">();</span>
+
+<span class="nx">warriors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">humanWarriorFactory</span><span class="p">.</span><span class="nx">train</span><span class="p">(</span><span class="s1">'chain armor'</span><span class="p">));</span>
+<span class="nx">warriors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">dwarfWarriorFactory</span><span class="p">.</span><span class="nx">train</span><span class="p">(</span><span class="s1">'heavy armor'</span><span class="p">));</span>
+<span class="nx">warriors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">elfWarriorFactory</span><span class="p">.</span><span class="nx">train</span><span class="p">(</span><span class="s1">'chain armor'</span><span class="p">));</span>
+<span class="nx">warriors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">elfArcherFactory</span><span class="p">.</span><span class="nx">train</span><span class="p">(</span><span class="s1">'light armor'</span><span class="p">));</span>
+<span class="nx">warriors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">humanWarriorFactory</span><span class="p">.</span><span class="nx">train</span><span class="p">(</span><span class="s1">'heavy armor'</span><span class="p">));</span>
+
+<span class="nx">warriors</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">warrior</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">warrior</span><span class="p">.</span><span class="nx">prepareWeapon</span><span class="p">();</span>
+    <span class="nx">warrior</span><span class="p">.</span><span class="nx">attack</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>The above code will output to the console the following.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">The</span> <span class="nx">human</span> <span class="nx">warrior</span> <span class="nx">stretches</span><span class="p">,</span> <span class="nx">grabs</span> <span class="nx">his</span> <span class="nx">mighty</span> <span class="nx">sword</span><span class="p">,</span> <span class="nx">smiles</span> <span class="nx">at</span> <span class="nx">it</span> <span class="nx">and</span> <span class="nx">is</span> <span class="nx">ready</span> <span class="nx">to</span> <span class="nx">fight</span><span class="p">.</span>
+<span class="o">-</span> <span class="nx">For</span> <span class="nx">honor</span><span class="o">!</span>
+<span class="nx">The</span> <span class="nx">dwarf</span> <span class="nx">takes</span> <span class="nx">his</span> <span class="nx">axe</span><span class="p">,</span> <span class="nx">swings</span> <span class="nx">it</span> <span class="nx">several</span> <span class="nx">times</span> <span class="nx">and</span> <span class="nx">starts</span> <span class="nx">looking</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">enemy</span> <span class="nx">to</span> <span class="nx">attack</span><span class="p">.</span>
+<span class="o">-</span> <span class="nx">For</span> <span class="nx">Durin</span><span class="o">!</span>
+<span class="nx">The</span> <span class="nx">elf</span> <span class="nx">takes</span> <span class="nx">his</span> <span class="kr">long</span> <span class="nx">sword</span> <span class="nx">and</span> <span class="nx">is</span> <span class="nx">ready</span> <span class="nx">to</span> <span class="nx">fight</span><span class="p">.</span>
+<span class="o">-</span> <span class="nx">Gurth</span> <span class="nx">enin</span> <span class="nx">goth</span><span class="o">!</span>
+<span class="nx">The</span> <span class="nx">elf</span> <span class="nx">takes</span> <span class="nx">his</span> <span class="nx">bow</span> <span class="nx">and</span> <span class="nx">is</span> <span class="nx">ready</span> <span class="nx">to</span> <span class="nx">fight</span><span class="p">.</span>
+<span class="o">-</span> <span class="nx">Gurth</span> <span class="nx">enin</span> <span class="nx">goth</span><span class="o">!</span></code></pre></figure>
+
+<p>Basically that’s it. It may feel somehow unclear though how the Abstract Factory Pattern works in JavaScript (or in general). It’s because of the nature of the language. Let’s see an example in Python that will show you a more “standard” implementation of Abstract Factory.</p>
+
+<h2 id="python-implementation">Python implementation</h2>
+
+<p>Huh?</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">AbstractFactory</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">AbstractWarrior</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="n">weapon</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">=</span> <span class="n">armor</span>
+
+    <span class="k">def</span> <span class="nf">prepare_weapon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">HumanWarrior</span><span class="p">(</span><span class="n">AbstractWarrior</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">race</span> <span class="o">=</span> <span class="s">'human'</span>
+       <span class="nb">super</span><span class="p">(</span><span class="n">HumanWarrior</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_weapon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">print</span><span class="p">(</span><span class="s">'The human warrior stretches, grabs his mighty {}, </span><span class="err">
+</span><span class="s">             smiles at it and is ready to fight.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">print</span><span class="p">(</span><span class="s">'For honor!'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DwarfWarrior</span><span class="p">(</span><span class="n">AbstractWarrior</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">race</span> <span class="o">=</span> <span class="s">'dwarf'</span>
+       <span class="nb">super</span><span class="p">(</span><span class="n">DwarfWarrior</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_weapon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">print</span><span class="p">(</span><span class="s">'The dwarf takes his {}, swings it several times </span><span class="err">
+</span><span class="s">           and starts looking for the enemy to attack.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">print</span><span class="p">(</span><span class="s">'For Durin!'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">ElfWarrior</span><span class="p">(</span><span class="n">AbstractWarrior</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">race</span> <span class="o">=</span> <span class="s">'elf'</span>
+       <span class="nb">super</span><span class="p">(</span><span class="n">ElfWarrior</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">weapon</span><span class="p">,</span> <span class="n">armor</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_weapon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">print</span><span class="p">(</span><span class="s">'The elf takes his {} and is ready to fight.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">print</span><span class="p">(</span><span class="s">'Gurth enin goth!'</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="advantages">Advantages</h2>
+
+<h2 id="disadvantages">Disadvantages</h2>
+
+<h2 id="real-world-usage-examples">Real world usage examples</h2>
+
+<h2 id="things-to-consider">Things to consider</h2>
+
+
+</article>
+
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'programming-for-kettles';
+    var disqus_identifier = '/design-patterns/2016/04/27/creational-abstract-factory-pattern';
+    var disqus_title      = 'Abstract Factory Pattern';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      Theme crafted with &lt;3 by <a href="http://johnotander.com">John Otander</a> (<a href="https://twitter.com/4lpine">@4lpine</a>).<br>
+      &lt;/&gt; available on <a href="https://github.com/johnotander/pixyll">Github</a>.
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>
