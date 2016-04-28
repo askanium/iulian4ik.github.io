@@ -14,7 +14,7 @@ Enjoy!
 			/* tell the SVG path to be a thin blue line without any area fill */
 			path {
 				stroke: #333;
-				stroke-width: 2;
+				stroke-width: 3;
 				fill: none;
 			}
 			
@@ -45,6 +45,9 @@ Enjoy!
 			}
 			#graph text {
 				font-size: 75%;
+			}
+			rect.stacked-bar {
+				shape-rendering: crispEdges;
 			}
 
 		</style>
