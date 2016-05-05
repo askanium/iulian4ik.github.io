@@ -63,4 +63,5 @@ Let's follow the process step by step:
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster/bookster.js"></script>
+<script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster/bookster-post.js"></script>
 <!--<script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster-treemap.js"></script>-->
