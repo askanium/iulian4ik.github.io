@@ -114,6 +114,7 @@ function superChart(jsonData){
 			.append("rect")
 			.attr("x", function(d){ return xBuffer(d.x); })
 			.attr("y", h)
+			.attr("class", 'stacked-bar')
 			.attr("width",xBuffer.rangeBand())
 			.attr("height",0);
 		
@@ -180,14 +181,14 @@ function superChart(jsonData){
 			.attr('r',0)
 			.attr('fill','#333')
 			.transition()
-			.attr('r',4);
+			.attr('r',5);
 		
 		circles.transition()
 			.delay(0)
 			.duration(animationDuration)
 			.attr('cx',function(d){return d.x;})
 			.attr('cy',function(d){return d.y;})
-			.attr('r',4);
+			.attr('r',5);
 		
 		circles.append("svg:title")
 			.text(function(d,i){return jsonData.data[i];})
