@@ -4,28 +4,52 @@ title: Bookster
 permalink: /bookster/
 categories: nlp
 ---
-This is the app described in [this]() post on how to make an emotional intensity poster of a book.
+This is the app described in [this](/bookster-an-emotions-poster-of-your-favorite-book) post on how to make an emotions intensity poster of a book.
 
 In order to use it, select any .txt file that you'd like to process and the app will deal with everything else.
 
 <input type="file" id="booksterFile" name="booksterFile" />
 
-<div id="post-bookster"></div>
+###Bookster
+
+<div id="post-bookster" class="bookster-wrapper"></div>
+<div class="no-file-selected">Choose a file first</div>
 
 ###Treemap 
 
 <div id="post-treemap"></div>
+<div class="no-file-selected">Choose a file first</div>
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster/bookster.js"></script>
 <script>
+  function resetDOM () {
+    var booksterDom = document.getElementById('post-bookster');
+    var treemapDom = document.getElementById('post-treemap');
+    var emptyFileMessageDoms = document.getElementsByClassName('no-file-selected');
+
+    for ( var i = 0, l = emptyFileMessageDoms.length; i < l; i++ ) {
+      emptyFileMessageDoms[i].style.display = 'none';
+    }
+
+    while (booksterDom.firstChild) {
+      booksterDom.removeChild(booksterDom.firstChild);
+    }
+    while (treemapDom.firstChild) {
+      treemapDom.removeChild(treemapDom.firstChild);
+    }
+  }
+
   function handleFileSelect(evt) {
     var file = evt.target.files[0];
     var reader = new FileReader();
 
     reader.onload = function(e) {
     	var text = e.target.result;
-    	var processedData = parseText(text);
+    	var booksterData = parseText(text);
+
+      resetDOM();
+      window.bookster(booksterData, 'post');
     };
       
     reader.readAsText(file);
@@ -43,9 +67,8 @@ In order to use it, select any .txt file that you'd like to process and the app 
       }
     });
 
-    window.bookster(booksterData, 'post');
-
     console.log(tokens);
+    return booksterData;
   }
 
   // AFINN is a list of English words rated for valence with an integer

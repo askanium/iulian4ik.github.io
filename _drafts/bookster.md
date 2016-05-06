@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Bookster - Make a emotions poster of your favorite book
+title: Bookster - Make an emotions poster of your favorite book
+permalink: /bookster-an-emotions-poster-of-your-favorite-book/
 categories: books chart emotions
 ---
 
@@ -28,7 +29,7 @@ That is exactly what is needed! Now, we need a book to try this on...
 
 For the purpose of demonstration, let's take the first book in the series of _**"The Lord of the Rings,"** by J.R.R.Tolkien._ This is a fantasy series that is on my reading list for some time already and it is quite popular (a lot of people have at least watched the movies if not read the books) so that we could somehow interpret the results. 
 
-**Fun fact:** The Lord Of The Rings is one of the most read book series ever.
+**Fun fact:** According to [wikipedia](https://en.wikipedia.org/wiki/List_of_best-selling_books#List_of_best-selling_single-volume_books), _The Lord Of The Rings_ is the best-selling novel ever written, with over 150 million copies sold.
 
 Let's follow the process step by step:
 
