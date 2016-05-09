@@ -10,12 +10,12 @@ In order to use it, select any .txt file that you'd like to process and the app 
 
 <input type="file" id="booksterFile" name="booksterFile" />
 
-###Bookster
+### Bookster
 
 <div id="post-bookster" class="bookster-wrapper"></div>
 <div class="no-file-selected">Choose a file first</div>
 
-###Treemap 
+### Treemap 
 
 <div id="post-treemap"></div>
 <div class="no-file-selected">Choose a file first</div>
