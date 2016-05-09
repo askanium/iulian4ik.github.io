@@ -1,0 +1,124 @@
+#resumalize {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    position: relative;
+}
+
+path.domain {
+    stroke-width: 1px;
+    fill: none;
+    stroke: #333;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #999;
+    shape-rendering: crispEdges;
+}
+
+line.slope-line {
+    stroke: #999;
+}
+
+path.workPolygon, path.learningPolygon {
+    stroke: #ffffff;
+    stroke-width: 2px;
+    cursor: pointer;
+}
+
+rect.timeline-rect {
+    fill: #555;
+    shape-rendering: crispEdges;
+}
+
+.year-separator {
+    fill: #777;
+    shape-rendering: crispEdges;
+}
+.year-label {
+    fill: #fff;
+    font-size: 11px;
+}
+
+.tooltip {
+    border: 2px solid #999999;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: #ffffff;
+    font-size: 12px;
+    color: #333;
+}
+
+.tooltip .title {
+    padding-bottom: 8px;
+}
+
+.tooltip div {
+    margin-top: 2px;
+}
+
+.tooltip ul {
+    margin: 3px 0;
+}
+.tooltip ul>li {
+    font-size: 12px;
+}
+
+.slope-chart-label {
+    font-weight: 700;
+    font-size: 12px;
+    fill: #333;
+}
+
+.slope-left-axis, .slope-right-axis {
+    fill: #333;
+    font-size: 12px;
+}
+
+.labelMeter {
+    font-size: 14px;
+    visibility: hidden;
+}
+
+#placeTitle {
+    color: #333;
+}
+#placeTitle h2 {
+    font-size: 18px;
+    color: #333;
+}
+#placeTitle h3{
+    font-size: 14px;
+    color: #333;
+}
+
+.responsibility-row, .responsibility-header {
+    padding: 6px;
+    font-size: 12px;
+    color: #333;
+}
+.responsibility-title {
+    display: inline-block;
+    font-weight: 700;
+    vertical-align: middle;
+    width: 20%;
+}
+.responsibility-description {
+    display: inline-block;
+    vertical-align: middle;
+    width: 55%;
+}
+.responsibility-achievements {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+}
+.responsibility-achievements ul {
+    margin: 0;
+}
+.responsibility-achievements ul>li {
+    font-size: 12px;
+}

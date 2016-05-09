@@ -15,3 +15,4 @@ These are some of my projects that I made sometime in past or more recently.
 ###Mini projects
 
 - [Bookster](/bookster) - make an emotional intensity poster of your favorite book
+- [resumalize](/resumalize) - visualize your resume
