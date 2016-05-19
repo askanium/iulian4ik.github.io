@@ -2,6 +2,7 @@
 layout: post
 title: Abstract Factory Pattern
 permalink: /patterns/abstract-factory/
+date: 2016-05-19 20:31:19
 categories: design-patterns
 ---
 **Abstract Factory Pattern** provides an interface for creating families of related objects without specifying their specific classes.
