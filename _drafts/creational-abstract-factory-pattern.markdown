@@ -9,11 +9,11 @@ categories: design-patterns
 
 ##When to use it
 
-Whenever you need to create different type of objects that are united by a common theme, that have similar behaviour and functionality.
+Whenever you need to create different type of objects that are united by a common theme, that have similar behaviour and functionality. Also, consider using Abstract Factory when you don't know beforehand what type of object/class you'll have to create, because you get the input on how to handle information from the user at runtime.
 
 ##Specific example
 
-In Middle-Earth, there are many races: Elves, Orcs, Maiar, Dwarves, Humans, and many-many others. Suppose now that we need to be able to create warriors of different races (Dwarfs, Elves, Human) to fight against Sauron. A "warrior" is the common theme for all these objects, that can fight, show off and prepare his weapon for battle, but yet each race's warrior is different.
+In Middle-Earth, there are many races: Elves, Orcs, Maiar, Dwarves, Humans, and many-many others. Suppose now that we need to have a way to create warriors of different races (Dwarfs, Elves, Human) but we don't know beforehand what races we'll need. We just need to provide a way to train warriors, but the decision will be done somewhere in the future. A "warrior" is the common theme for all these objects, that can fight, show off and prepare his weapon for battle, but yet each race's warrior is different.
 
 ##Implementation without pattern
 
@@ -21,7 +21,7 @@ Without the Abstract Factory Pattern, we will have a class for each type of warr
 
 ##Implementation using Abstract Factory Pattern
 
-Using the pattern, we will have an `AbstractFactory` defined that will know how to create different types of warriors and we will have a common interface for all types of warriors that will define _how_ the warriors can behave. The AbstractFactory that builds warriors and the AbstractWarrior interface that defines how the warriors behave are two key elements in implementing the Abstract Factory Pattern. Let's see what are the components and specific examples to make things more clear.
+Using the pattern, we will have an `AbstractFactory` defined that will generate different types of concrete factories that, in turn, will know how to create different types of warriors and we will have a common interface for all types of warriors that will define _how_ the warriors can behave. The AbstractFactory that builds factories and the AbstractSoldier interface that defines how the warriors behave are two key elements in implementing the Abstract Factory Pattern. Let's see what are the components and specific examples to make things more clear.
 
 ##Pattern components
 
@@ -29,7 +29,7 @@ Using the pattern, we will have an `AbstractFactory` defined that will know how 
 
 ##JavaScript implementation
 
-In statically-typed languages such as Java, the abstract classes and interfaces enforce consistency in derived classes. In JavaScript there is no support for class-based inheritance, therefore the AbstractFactory and AbstractWarrior classes are absent in the implementation of this pattern. But because JavaScript is a dynamically-typed language, we have [duck typing](https://en.wikipedia.org/wiki/Duck_typing) to help us implement the Abstract Factory Pattern. We will have to assure that the factories that generate warriors as well as the warriors that are to be generated will have that consistency that in Java is achieved using abstract classes and interfaces. This means that we need to take care that all our factories and types of warriors have the same methods defined on them.
+In statically-typed languages such as Java, the abstract classes and interfaces enforce consistency in derived classes. In JavaScript there is no support for class-based inheritance, therefore the AbstractFactory and AbstractSoldier classes are absent in the implementation of this pattern. But because JavaScript is a dynamically-typed language, we have [duck typing](https://en.wikipedia.org/wiki/Duck_typing) to help us implement the Abstract Factory Pattern. We will have to assure that the factories that generate warriors as well as the warriors that are to be generated will have that consistency that in Java is achieved using abstract classes and interfaces. This means that we need to take care that all our factories and types of warriors have the same methods defined on them.
 
 Let's define the Human, Elves and Dwarves warriors and their corresponding factories.
 
@@ -142,74 +142,164 @@ Basically that's it. It may feel somehow unclear though how the Abstract Factory
 
 ##Python implementation
 
-Huh?
+In Python we do have class-based inheritance, therefore we will have the factory and warrior abstract classes.
 
 {% highlight python lineanchors %}
 class AbstractFactory:
-    def train(self):
-       pass
+    factories = {
+        "human": HumanSoldierFactory,
+        "dwarf": DwarfSoldierFactory,
+        "elf": ElfSoldierFactory
+    }
 
-class AbstractWarrior:
+    @classmethod
+    def get_factory(cls, factory):
+        chosen_factory = cls.factories.get(factory, None)
+        if chosen_factory is None:
+            raise TypeError('Unknown Factory.')
+        return chosen_factory()
+
+class AbstractSoldier:
     def __init__(self, weapon, armor):
-       self.weapon = weapon
-       self.armor = armor
+        self.weapon = weapon
+        self.armor = armor
 
     def prepare_weapon(self):
-       pass
+        pass
 
     def attack(self):
-       pass
+        pass
 
-class HumanWarrior(AbstractWarrior):
+class HumanWarrior(AbstractSoldier):
     def __init__(self, weapon, armor):
-       self.race = 'human'
-       super(HumanWarrior, self).__init__(weapon, armor)
+        self.race = 'human'
+        super(HumanWarrior, self).__init__(weapon, armor)
 
     def prepare_weapon(self):
-       print('The human warrior stretches, grabs his mighty {}, 
-             smiles at it and is ready to fight.'.format(self.weapon))
+        print('The human warrior stretches, grabs his mighty {}, smiles at it and is ready to fight.'.format(self.weapon))
 
     def attack(self):
-       print('For honor!')
+        print('For honor!')
 
-class DwarfWarrior(AbstractWarrior):
+class HumanArcher(AbstractSoldier):
     def __init__(self, weapon, armor):
-       self.race = 'dwarf'
-       super(DwarfWarrior, self).__init__(weapon, armor)
+        self.race = 'human'
+        super().__init__(weapon, armor)
 
     def prepare_weapon(self):
-       print('The dwarf takes his {}, swings it several times 
-           and starts looking for the enemy to attack.'.format(self.weapon))
+        print('The archer takes his {} with agility and checks the string.'.format(self.weapon))
 
     def attack(self):
-       print('For Durin!')
+        print('Tzzzzing!')
 
-class ElfWarrior(AbstractWarrior):
+class DwarfWarrior(AbstractSoldier):
     def __init__(self, weapon, armor):
-       self.race = 'elf'
-       super(ElfWarrior, self).__init__(weapon, armor)
+        self.race = 'dwarf'
+        super().__init__(weapon, armor)
 
     def prepare_weapon(self):
-       print('The elf takes his {} and is ready to fight.'.format(self.weapon))
+        print('The dwarf takes his {}, swings it several times and starts looking for the enemy to attack.'.format(self.weapon))
 
     def attack(self):
-       print('Gurth enin goth!')
+        print('For Durin!')
 
+class DwarfArcher(AbstractSoldier):
+    def __init__(self, weapon, armor):
+        self.race = 'human'
+        super().__init__(weapon, armor)
 
+    def prepare_weapon(self):
+        print("The dwarf axe thrower checks his {}'s sharpness.".format(self.weapon))
+
+    def attack(self):
+        print('Eat some metal!')
+
+class ElfWarrior(AbstractSoldier):
+    def __init__(self, weapon, armor):
+        self.race = 'elf'
+        super().__init__(weapon, armor)
+
+    def prepare_weapon(self):
+        print('The elf takes his {} and is ready to fight.'.format(self.weapon))
+
+    def attack(self):
+        print('Gurth enin goth!')
+
+class ElfArcher(AbstractSoldier):
+    def __init__(self, weapon, armor):
+        self.race = 'human'
+        super().__init__(weapon, armor)
+
+    def prepare_weapon(self):
+        print('The elven archer chooses who will be the first 10 victims of his first shot.'.format(self.weapon))
+
+    def attack(self):
+        print('Gurth enin goth!')
+
+class HumanSoldierFactory:
+    def train_warrior(self, armor):
+        return HumanWarrior('sword', armor)
+    def train_archer(self, armor):
+        return HumanArcher('crossbow', armor)
+
+class DwarfSoldierFactory:
+    def train_warrior(self, armor):
+        return DwarfWarrior('axe', armor)
+    def train_archer(self, armor):
+        return DwarfArcher('throwing axe', armor)
+
+class ElfSoldierFactory:
+    def train_warrior(self, armor):
+        return ElfWarrior('long sword', armor)
+    def train_archer(self, armor):
+        return ElfArcher('bow', armor)
+{% endhighlight %}
+
+Then, whenever we want to create warriors of specific type, we address to the corresponding factory.
+
+{% highlight python lineanchors %}
+human_warrior_factory = AbstractFactory.get_factory('human')
+dwarf_warrior_factory = AbstractFactory.get_factory('dwarf')
+elf_warrior_factory = AbstractFactory.get_factory('elf')
+
+warriors = list()
+
+warriors.append(human_warrior_factory.train_archer('chain armor'))
+warriors.append(dwarf_warrior_factory.train_warrior('heavy armor'))
+warriors.append(elf_warrior_factory.train_archer('light armor'))
+
+for warrior in warriors:
+    warrior.prepare_weapon()
+{% endhighlight %}
+
+The above code will print:
+
+{% highlight python lineanchors %}
+The archer takes his crossbow with agility and checks the string.
+The dwarf takes his axe, swings it several times and starts looking for the enemy to attack.
+The elven archer chooses who will be the first 10 victims of his first shot.
+{% endhighlight %}
+
+You might note that our factories do not inherit from the AbstractFactory class. Over the internet there are implementations in Python like ours and there are implementations where factories inherit from an abstract factory. This is one of examples of the ambiguity in implementation in different languages. Originally, in the GoF book, the factories inherited from the abstract factory and overrode the methods. Probably this is the most "correct" way to implement the Abstract Factory Pattern. However, in Python, due to its dynamic nature, we are not obliged to do that and it's up to the programmer to choose how exactly to implement the pattern.
+
+{% highlight python lineanchors %}
 {% endhighlight %}
 
 ##Advantages
 
-
+- Separation of concrete classes from the client and thus having more control of the way and type of objects that are created.
+- Changing of a product family is easy - just switch the concrete factory (e.g. HobbitSoldierFactory instead of DwarfFactory) and the whole product family changes (HobbitWarrior and HobbitArcher).
+- Provides consistency among products.
 
 ##Disadvantages
 
-
+- Generally speaking, the Abstract Factory Pattern adds another level ob abstraction, which makes your code more complex.
+- Whenever you need to add a method to a concrete factory, you need to add it to all factories in order to keep things consistent.
 
 ##Real world usage examples
 
-
+- Dependency Injection (DI) makes use of the Abstract Factory, where you don't know beforehand what type of object you need to inject.
+- 
 
 ##Things to consider
-
 
