@@ -7,27 +7,27 @@ categories: design-patterns
 ---
 **Abstract Factory Pattern** provides an interface for creating families of related objects without specifying their specific classes.
 
-##When to use it
+## When to use it
 
 Whenever you need to create different type of objects that are united by a common theme, that have similar behaviour and functionality. Also, consider using Abstract Factory when you don't know beforehand what type of object/class you'll have to create, because you get the input on how to handle information from the user at runtime.
 
-##Specific example
+## Specific example
 
 In Middle-Earth, there are many races: Elves, Orcs, Maiar, Dwarves, Humans, and many-many others. Suppose now that we need to have a way to create warriors of different races (Dwarfs, Elves, Human) but we don't know beforehand what races we'll need. We just need to provide a way to train warriors, but the decision will be done somewhere in the future. A "warrior" is the common theme for all these objects, that can fight, show off and prepare his weapon for battle, but yet each race's warrior is different.
 
-##Implementation without pattern
+## Implementation without pattern
 
 Without the Abstract Factory Pattern, we will have a class for each type of warrior that will create warriors of specific types with their own characteristics, attributes and methods. We will need to know how to "operate" with each type of warrior in order to succeed in the battle.
 
-##Implementation using Abstract Factory Pattern
+## Implementation using Abstract Factory Pattern
 
 Using the pattern, we will have an `AbstractFactory` defined that will generate different types of concrete factories that, in turn, will know how to create different types of warriors and we will have a common interface for all types of warriors that will define _how_ the warriors can behave. The AbstractFactory that builds factories and the AbstractSoldier interface that defines how the warriors behave are two key elements in implementing the Abstract Factory Pattern. Let's see what are the components and specific examples to make things more clear.
 
-##Pattern components
+## Pattern components
 
 ![Abstract Factory Pattern Participants]({{ site.url }}/assets/images/DesignPatterns/AbstractFactoryPattern.png)
 
-##JavaScript implementation
+## JavaScript implementation
 
 In statically-typed languages such as Java, the abstract classes and interfaces enforce consistency in derived classes. In JavaScript there is no support for class-based inheritance, therefore the AbstractFactory and AbstractSoldier classes are absent in the implementation of this pattern. But because JavaScript is a dynamically-typed language, we have [duck typing](https://en.wikipedia.org/wiki/Duck_typing) to help us implement the Abstract Factory Pattern. We will have to assure that the factories that generate warriors as well as the warriors that are to be generated will have that consistency that in Java is achieved using abstract classes and interfaces. This means that we need to take care that all our factories and types of warriors have the same methods defined on them.
 
@@ -140,7 +140,7 @@ Basically that's it. It may feel somehow unclear though how the Abstract Factory
 {% highlight javascript lineanchors %}
 {% endhighlight %}
 
-##Python implementation
+## Python implementation
 
 In Python we do have class-based inheritance, therefore we will have the factory and warrior abstract classes.
 
@@ -285,17 +285,17 @@ You might note that our factories do not inherit from the AbstractFactory class.
 {% highlight python lineanchors %}
 {% endhighlight %}
 
-##Advantages
+## Advantages
 
 - Separation of concrete classes from the client and thus having more control of the way and type of objects that are created.
 - Changing of a product family is easy - just switch the concrete factory (e.g. HobbitSoldierFactory instead of DwarfFactory) and the whole product family changes (HobbitWarrior and HobbitArcher).
 - Provides consistency among products.
 
-##Disadvantages
+## Disadvantages
 
 - Generally speaking, the Abstract Factory Pattern adds another level ob abstraction, which makes your code more complex.
 - Whenever you need to add a method to a concrete factory, you need to add it to all factories in order to keep things consistent.
 
-##Real world usage examples
+## Real world usage examples
 
 - Dependency Injection (DI) makes use of the Abstract Factory, where you don't know beforehand what type of object you need to inject.
