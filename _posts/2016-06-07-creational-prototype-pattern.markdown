@@ -1,38 +1,42 @@
 ---
 layout: post
 title: Prototype Pattern
+permalink: /patterns/prototype/
+date: 2016-06-07 20:31:19
 categories: design-patterns
 ---
-##Intent
-
 **Prototype Pattern** is a _creational pattern_ that provides the possibility to easily obtain a duplicate of an object based on a given prototype.
 
-##When to use it
+## When to use it
 
 Whenever you need to generate copies of similar simple or complex objects in your projects, consider using a Prototype Pattern.
 
-##Specific example
+## Specific example
 
 Have you ever wondered how Sauron created his mighty Orc army? I believe the used some sort of magical type of the Prototype Pattern. He doesn't need each Orc to have a personality, he needs many copies of several types of strong warriors that can fight. Suppose we serve the Dark side and we need to create a fast and simple way to create 3 types of orcs: [_Uruk Scout_](http://lotr.wikia.com/wiki/Uruk-hai_Scouts), [_Uruk Pikeman_](http://lotr.wikia.com/wiki/Uruk-hai_Pikeman) and [_Uruk-hai berserker_](http://lotr.wikia.com/wiki/Berserkers) Let's see how the Prototype Pattern can help us in this situation.
 
-##Implementation without pattern
+## Implementation without pattern
 
 Without the Prototype Pattern, there are mainly 2 possibilities:
 
 - create 3 separate classes for each type of warrior we need, all of which would inherit from an `UrukHai` class and create warriors of each class separately.
 - create only one `UrukHai` class and create different types of warriors by providing different parameters to the class on initialization.
 
-##Implementation using Prototype Pattern
+## Implementation using Prototype Pattern
 
 The key in implementing a Prototype Pattern is to have a possibility to clone existing objects. Thus, we would have 3 objects that would represent a scout, a pikeman and a berserker that could clone themselves on demand.
 
 Alternatively, we could have a pool of available prototypes from which we could select which type of warrior we would like to clone.
 
-##Pattern components
+## Pattern components
 
-TBD
+![Prototype Pattern Participants]({{ site.url }}/assets/images/DesignPatterns/PrototypePattern.png)
 
-##JavaScript implementation
+- The _Client_ creates a new clone by asking the Prototype to clone itself.
+- The _Prototype_ is an object/collection of objects that can clone itself.
+- The _Clones_ are objects that are being created by the Prototype's cloning.
+
+## JavaScript implementation
 
 JavaScript itself is a prototype based language, meaning that inheritance is performed by cloning existing objects that serve as prototypes. This makes the usage of prototype pattern in Javascript easier, as the language itself facilitates pattern's underlying concepts.
 
@@ -60,7 +64,7 @@ var urukHaiClone = Object.create(urukHai);
 And that's all you need in order to obtain a clone in JavaScript that inherits everything from its parent object. But let's go further and define the `create` method on the prototype itself.
 
 {% highlight javascript lineanchors %}
-var urukHai.create = function (newProps) {
+urukHai.create = function (newProps) {
     var clone = Object.create(this);
     for ( var prop in newProps ) {
         if ( newProps.hasOwnProperty(prop) ) {
@@ -89,7 +93,7 @@ console.log(urukHaiScout.maxSpeed);  // 10
 
 In the code above, besides cloning the prototype, we implemented the possibility to override some of the clone's properties and/or methods. This can come in handy when we need a duplicate of a complex object with most of its structure the same and only a few properties different.
 
-Now, let's create a warriors **Prototype Manager** that can create different warriors on demand. A Prototype Manager is useful when a number of prototypes is dynamic. Suppose that Sauron might want to slightly modify an existing prototype and clone the newly created warrior as well as the existing warrior. We do not know beforehand what warriors might serve as prototypes, but we can provide an interface for Sauron to register warriors as prototypes.
+Now, let's create a warriors **Prototype Manager** that can create different warriors on demand. A Prototype Manager is useful when the number of prototypes is dynamic. Suppose that Sauron might want to slightly modify an existing prototype and clone the newly created warrior as well as the existing warrior. We do not know beforehand what warriors might serve as prototypes, but we can provide an interface for Sauron to register warriors as prototypes.
 
 {% highlight javascript lineanchors %}
 var orcWarriorPrototypeManager = {
@@ -125,8 +129,7 @@ var urukHaiPikeman = orcWarriorPrototypeManager.create('urukHai', {
     weight: 80,
     armor: 'heavy',
     weapon: 'pike',
-    maxSpeed: 8,
-    ??????????assault: function () {}
+    maxSpeed: 8
 });
 
 // Register our `urukHaiPikeman` as a prototype
@@ -159,14 +162,17 @@ orcWarriorPrototypeManager.create('urukHaiBerserker');  // Creates a berserker
 {% highlight javascript lineanchors %}
 {% endhighlight %}
 
-##Python implementation
+## Python implementation
 
 In Python, we can obtain a clone of an object using the [`copy`](https://docs.python.org/3.1/library/copy.html) module. `copy.deepcopy()` creates a deep copy and `copy.copy()` creates a shallow copy. Which one to choose depends on what you are trying to achieve. As a simple explanation of shallow vs deep copy, check out this SO [answer](http://stackoverflow.com/a/17246744/3120525). For our purpose, a shallow copy will be enough.
 
 {% highlight python lineanchors %}
+from collections import OrderedDict
+
 class UrukHai:
-    def __init__(self, weight, weapon, max_speed, attack_speed, **other):
+    def __init__(self, warrior_type, weight, weapon, max_speed, attack_speed, **other):
         '''Other might be: disguise, armor, etc.'''
+        self.warrior_type = warrior_type
         self.weight = weight
         self.weapon = weapon
         self.max_speed = max_speed
@@ -174,19 +180,18 @@ class UrukHai:
         self.__dict__.update(other)
 
     def __str__(self):
-        mylist=[]
+        result = []
         ordered = OrderedDict(sorted(self.__dict__.items()))
-        for i in ordered.keys():
-            mylist.append('{}: {}'.format(i, ordered[i]))
-            if i == 'price':
-                mylist.append('$')
-            mylist.append('\n')
-        return ''.join(mylist)
+        for prop, value in ordered.items():
+            result.append('{}: {}'.format(prop, value))
+        return '\n'.join(result)
 {% endhighlight %}
 
 And the Prototype Manager:
 
 {% highlight python lineanchors %}
+import copy
+
 class PrototypeManager:
     def __init__(self):
         self.prototypes = dict()
@@ -206,29 +211,57 @@ class PrototypeManager:
         return obj
 {% endhighlight %}
 
+Now let's create a pikeman and a warrior and register them in our PrototypeManager.
+
+{% highlight python lineanchors %}
+pikeman = UrukHai(warrior_type='pikeman', weight=50, weapon='pike', max_speed=12, attack_speed=10, armor='heavy')
+warrior = UrukHai(warrior_type='warrior', weight=45, weapon='sword', max_speed=15, attack_speed=12, armor='chain')
+
+prototype_manager = PrototypeManager()
+
+prototype_manager.register('pikeman', pikeman)
+prototype_manager.register('warrior', warrior)
+{% endhighlight %}
+
+And now, whenever we need copies of warriors or pikemen, we simply ask the prototype manager to create a clone.
+
+{% highlight python lineanchors %}
+another_warrior = prototype_manager.clone('warrior')
+another_pikeman = prototype_manager.clone('pikeman')
+
+print(another_warrior)
+
+# armor: chain
+# attack_speed: 12
+# max_speed: 15
+# warrior_type: warrior
+# weapon: sword
+# weight: 45
+{% endhighlight %}
+
 {% highlight python lineanchors %}
 {% endhighlight %}
 
-##Advantages
+## Advantages
 
-- It can greatly reduce the number of required classes for generating similar objects with slight differences (e.g. an Uruk-Hai class instead of 3 classes for Scout, Pikeman and Berserker).
+- It can greatly reduce the number of required classes for generating similar objects with slight differences (e.g. one Uruk-Hai class instead of 3 classes for Scout, Pikeman and Berserker).
 
 - The cloned object inherits references to existing functions from the prototype, thus optimizing memory usage and boosting performance.
 
 - Possibility to dynamically add prototypes to clone from.
 
-##Disadvantages
+## Disadvantages
 
 - For simple objects with few differences the Prototype Pattern is not worth the effort and will overcomplicate things.
 
-##Real world usage examples
+## Real world usage examples
 
 As it is a creational pattern and as nowadays humanity creates information in tremendous volumes, this pattern can be used whenever there's a need to create instances of different objects. Some examples:
 
 - When creating a company structure with its shops and other entities, each of which has some shared values (e.g. shops in the same city have the same City, Company and Department)
 - When on your mobile phone you want to send someone a message based on a predefined template, you can register those templates ("Will call you later.", "Can't talk right now.", etc.) as prototypes that can be cloned.
 
-##Things to consider
+## Things to consider
 
 - In JavaScript you can pass as a second argument to `Object.create` an object with properties settings. You can make some properties configurable, enumerable or writable. For instance we would like to restrict changing the weapon of an Uruk-Hai Pikeman, because, after all, a pikeman without a pike won't be a pikeman.
 

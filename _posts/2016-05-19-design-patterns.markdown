@@ -23,9 +23,9 @@ So, here's the list of the patterns:
 ### Creational patterns
 
 1. [Abstract factory pattern](/patterns/abstract-factory/)
-2. Builder pattern
+2. [Builder pattern](/patterns/builder/)
 3. Factory method pattern
-4. Prototype pattern
+4. [Prototype pattern](/patterns/prototype/)
 5. Singleton pattern
 
 ### Structural patterns
