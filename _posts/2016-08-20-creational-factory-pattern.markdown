@@ -5,7 +5,7 @@ permalink: /patterns/factory/
 date: 2016-08-20 15:31:19
 categories: design-patterns
 ---
-**Factory Pattern** is a _creational pattern_ that provides an interface for creating objects, but it lets subclasses decide which type of object to instantiate.
+**Factory Pattern** is a _creational pattern_ that provides an interface for creating objects of different types without knowing all the details on how to create the required object.
 
 ## When to use it
 
