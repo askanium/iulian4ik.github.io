@@ -24,7 +24,7 @@ So, here's the list of the patterns:
 
 1. [Abstract factory pattern](/patterns/abstract-factory/)
 2. [Builder pattern](/patterns/builder/)
-3. Factory pattern
+3. [Factory pattern](/patterns/factory/)
 4. [Prototype pattern](/patterns/prototype/)
 5. Singleton pattern
 
