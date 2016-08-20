@@ -131,7 +131,7 @@ class WarriorFactory:
     # We define a class method here to be able to get objects 
     # we need without instantiating a WarriorFactory object.
     @classmethod
-    def create_warrior(self, warrior_type):
+    def create_warrior(cls, warrior_type):
         if warrior_type == 'swordsman':
             return Swordsman(weapon='sword', armor='chain')
         elif warrior_type == 'archer':
