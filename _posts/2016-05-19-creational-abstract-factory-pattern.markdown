@@ -34,13 +34,13 @@ In statically-typed languages such as Java, the abstract classes and interfaces 
 Let's define the Human, Elves and Dwarves warriors and their corresponding factories.
 
 {% highlight javascript lineanchors %}
-function HumanWarrior (armor, weapon) {
+function HumanSoldier (armor, weapon) {
     this.race = 'human';
     this.armor = armor;
     this.weapon = weapon;
 
     this.prepareWeapon = function () {
-        console.log('The human warrior stretches, grabs his mighty ' 
+        console.log('The human soldier stretches, grabs his mighty ' 
             + this.weapon + ', smiles at it and is ready to fight.');
     }
 
@@ -49,7 +49,7 @@ function HumanWarrior (armor, weapon) {
     }
 }
 
-function DwarfWarrior (armor, weapon) {
+function DwarfSoldier (armor, weapon) {
     this.race = 'dwarf';
     this.armor = armor;
     this.weapon = weapon;
@@ -64,7 +64,7 @@ function DwarfWarrior (armor, weapon) {
     }
 }
 
-function ElfWarrior (armor, weapon) {
+function ElfSoldier (armor, weapon) {
     this.race = 'elf';
     this.armor = armor;
     this.weapon = weapon;
@@ -79,24 +79,54 @@ function ElfWarrior (armor, weapon) {
     }
 }
 
-function HumanWarriorFactory () {
-    this.train = function (armor) {
-        return new HumanWarrior(armor, 'sword');
+function HumanFactory () {
+    this.trainSoldier = function (type, armor) {
+        if ( type === 'warrior' ) {
+            return new HumanSoldier(armor, 'sword');
+        } else {
+            return new HumanSoldier(armor, 'crossbow');
+        }
     }
 }
-function DwarfWarriorFactory () {
-    this.train = function (armor) {
-        return new DwarfWarrior(armor, 'axe');
+
+function DwarfFactory () {
+    this.trainSoldier = function (type, armor) {
+        // Note that in this case we do not have a DwarfArcher,
+        // so in any case, indifferent of the `type` value, we
+        // will train a DwarfSoldier.
+        return new DwarfSoldier(armor, 'axe');
     }
 }
-function ElfWarriorFactory () {
-    this.train = function (armor) {
-        return new ElfWarrior(armor, 'long sword');
+
+function ElfFactory () {
+    this.trainSoldier = function (type, armor) {
+        if ( type === 'warrior' ) {
+            return new ElfSoldier(armor, 'long sword');
+        } else {
+            return new ElfSoldier(armor, 'bow');
+        }
     }
 }
-function ElfArcherFactory () {
-    this.train = function (armor) {
-        return new ElfWarrior(armor, 'bow');
+{% endhighlight %}
+
+Having these factories, let's create the Abstract Factory, that will return the factory required to produce the needed soldiers.
+
+{% highlight javascript lineanchors %}
+function AbstractSoldierFactory () {
+    this.getFactory = function (race) {
+        switch (race) {
+            case 'human':
+                return new HumanFactory();
+                break;
+            case 'elf':
+                return new ElfFactory();
+                break;
+            case 'dwarf':
+                return new DwarfFactory();
+                break;
+            default:
+                return new HumanFactory();
+        }
     }
 }
 {% endhighlight %}
@@ -104,28 +134,30 @@ function ElfArcherFactory () {
 Now, in order to make use of your implementation, we need to call the constructors of our factories, that in turn will generate instances of warriors for us.
 
 {% highlight javascript lineanchors %}
-var warriors = [];
-var humanWarriorFactory = new HumanWarriorFactory();
-var dwarfWarriorFactory = new DwarfWarriorFactory();
-var elfWarriorFactory = new ElfWarriorFactory();
-var elfArcherFactory = new ElfArcherFactory();
+var factory = new AbstractSoldierFactory();
 
-warriors.push(humanWarriorFactory.train('chain armor'));
-warriors.push(dwarfWarriorFactory.train('heavy armor'));
-warriors.push(elfWarriorFactory.train('chain armor'));
-warriors.push(elfArcherFactory.train('light armor'));
-warriors.push(humanWarriorFactory.train('heavy armor'));
+var soldiers = [];
 
-warriors.each(function (warrior) {
-    warrior.prepareWeapon();
-    warrior.attack();
+var humanFactory = factory.getFactory('human');
+var dwarfFactory = factory.getFactory('dwarf');
+var elfFactory = factory.getFactory('elf');
+
+soldiers.push(humanFactory.trainSoldier('warrior', 'chain armor'));
+soldiers.push(dwarfFactory.trainSoldier('warrior', 'heavy armor'));
+soldiers.push(elfFactory.trainSoldier('warrior', 'chain armor'));
+soldiers.push(elfFactory.trainSoldier('archer', 'light armor'));
+soldiers.push(humanFactory.trainSoldier('warrior', 'heavy armor'));
+
+soldiers.forEach(function (soldier) {
+    soldier.prepareWeapon();
+    soldier.attack();
 });
 {% endhighlight %}
 
 The above code will output to the console the following.
 
 {% highlight javascript %}
-The human warrior stretches, grabs his mighty sword, smiles at it and is ready to fight.
+The human soldier stretches, grabs his mighty sword, smiles at it and is ready to fight.
 - For honor!
 The dwarf takes his axe, swings it several times and starts looking for the enemy to attack.
 - For Durin!
@@ -133,6 +165,8 @@ The elf takes his long sword and is ready to fight.
 - Gurth enin goth!
 The elf takes his bow and is ready to fight.
 - Gurth enin goth!
+The human soldier stretches, grabs his mighty sword, smiles at it and is ready to fight.
+- For honor!
 {% endhighlight %}
 
 Basically that's it. It may feel somehow unclear though how the Abstract Factory Pattern works in JavaScript (or in general). It's because of the nature of the language. Let's see an example in Python that will show you a more "standard" implementation of Abstract Factory.
