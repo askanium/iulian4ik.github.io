@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Singleton Pattern
+permalink: /patterns/singleton/
+date: 2016-08-25 15:31:19
 categories: design-patterns
 ---
-##Intent
-
 **Singleton Pattern** is a _creational pattern_ that assures there is only one instance of an object in your program so that when many different parts of your code want to access it, all of them operate on the same object.
 
 ##When to use it
@@ -19,13 +19,15 @@ In the Middle-Earth, one of the things that are unique is the _One Ring._ There 
 
 Without the Singleton Pattern, each time we would need to get the OneRing object, we would check whether it exists, and if not, create it, otherwise use the existing ring.
 
-##Implementation using Prototype Pattern
+##Implementation using Singleton Pattern
 
 Using the Singleton Pattern, the way that we ask for the object instance does not let us create duplicates. We don't have access to the Ring directly, but we obtain it from the Singleton.
 
 ##Pattern components
 
-TBD
+![Singleton Pattern Participants]({{ site.url }}/assets/images/DesignPatterns/Singleton.png)
+
+The _Singleton_ is responsible for creating and managing the instance object and defines a `getInstance()` method that returns the unique instance.
 
 ##JavaScript implementation
 
@@ -101,7 +103,7 @@ class TheOneRing:
         return cls.__ring
 {% endhighlight %}
 
-Now, whenever we need The Ring, we just initialize an instance of `TheOneRing` class, which checks whether there exists an instance of the ring already and if not, creates it.
+Now, whenever we need The Ring, we call the `get_ring()` method of the `TheOneRing` class, which checks whether there exists an instance of the ring already and if not, creates it.
 
 {% highlight python lineanchors %}
 my_precious = TheOneRing.get_ring()
@@ -126,7 +128,7 @@ Here, [id()](https://docs.python.org/3/library/functions.html#id) returns the id
 ##Disadvantages
 
 - Singletons can become (most of them do) what is known as a _glorified global variable_ (a variable that knows and can do too much things)
-- If not implemented properly and if the Singleton participates in business logic, bad things can happen, because several instances of the Singleton can be created that are not synchronized, thus affecting the flow of your code.
+- If not implemented properly and if the Singleton participates heavily in business logic, bad things can happen, because several instances of the Singleton can be created that are not synchronized, thus affecting the flow of your code.
 - Dependency Injection Pattern is a very useful pattern, but Singleton Pattern hides the dependencies of the object, because it is accessible from global state and you will need to scan the whole code of your function to check whether a function uses the Singleton or not (you can, of course, inject it into the functions that need it though, thus alleviating the negative impact it has on hiding dependencies)
 
 ##Real world usage examples
@@ -136,7 +138,7 @@ Here, [id()](https://docs.python.org/3/library/functions.html#id) returns the id
 
 ##Things to consider
 
-There's a lot of debate around the usage of Singleton Pattern. In most cases it doesn't bring any added value, because the task it tries to solve can be achieved by restructuring the code and thus not having/needing a global variable. (WHY global variables are bad link here). There are actually very few "acceptable" cases to use a Singleton, and when you found yourself in the situation that you need to have one instance only of something that will be accessed from different parts of your code, consider using the Singleton Pattern.
+There's a lot of debate around the usage of Singleton Pattern. In most cases it doesn't bring any added value, because the task it tries to solve can be achieved by restructuring the code and thus not having/needing a global variable (on why using global variables is bad, check out [this](http://stackoverflow.com/a/19158418/3120525) stackoverflow answer that contains more links or just google it yourself). There are actually very few "acceptable" cases to use a Singleton, and when you found yourself in the situation that you need to have one instance only of something that will be accessed from different parts of your code, consider using the Singleton Pattern.
 
 ##Additional resources
 
