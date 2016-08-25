@@ -26,7 +26,7 @@ So, here's the list of the patterns:
 2. [Builder pattern](/patterns/builder/)
 3. [Factory pattern](/patterns/factory/)
 4. [Prototype pattern](/patterns/prototype/)
-5. Singleton pattern
+5. [Singleton pattern](/patterns/singleton/)
 
 ### Structural patterns
 
