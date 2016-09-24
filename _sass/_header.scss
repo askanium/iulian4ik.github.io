@@ -11,15 +11,25 @@
 }
 
 .site-header .site-title {
-  font-size: $h2;
+  font-family: $title-font-family;
+  font-size: $title-font-size;
+  display: inline-block;
+  text-align: center;
 }
 
 .site-nav {
   margin-top: $space-2;
+  /*line-height: .9;*/
+  padding: .4rem 0 .65rem;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #eee;
 }
 
 .site-header nav a {
   color: #666;
+  font-family: $heading-font-family;
+  font-size: .75rem;
 }
 
 .site-header nav a:hover,

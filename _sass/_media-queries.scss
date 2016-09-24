@@ -21,12 +21,15 @@
   }
 
   .site-header .site-title {
-    font-size: $h3;
-    float: left;
+    font-size: $title-font-size;
+  }
+
+  .site-header .site-title-wrapper {
+    text-align: center; 
+    margin: $title-top 0 $title-bottom;
   }
 
   .site-header .site-nav {
-    float: right;
     margin-top: .25rem;
   }
 

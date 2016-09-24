@@ -5,7 +5,17 @@ permalink: /about/
 tags: about
 ---
 
-Welcome to the club of programmers who want to become great programmers! "Programming for Kettles" comes from a russian idiom that is translated as "Programming for Dummies." However, the intent of this website is not to consider you a dummy, but to explain different programming concepts in a simple and understandable way.
+Have you ever wanted to be a professional programmer and to build great products used by millions of people worldwide?
+
+Programming is one of the most trending jobs right now and learning to code was never more in demand than right now.
+
+By help of the **Heroes of Programming** you can learn the foundations of programming.
+
+## Who are the Heroes of Programming?
+
+Since ancient times people searched for heroes who did heroic deeds and saved people from monsters and other terrible things. bla bla bla.
+
+By mastering the concepts related to each hero, you can master the language itself. And from there you are not far to become a great programmer.
 
 ## A short bio
 
@@ -24,3 +34,29 @@ When working as a trainer, I was (and currently am) passionate about learning pr
 >If you can't explain it simply you don't understand it well enough.
 
 And this is the place where I will try to explain things in a simple manner.
+
+## Contact me
+
+<div class="py2">
+  {% if site.ajaxify_contact_form %}
+    <form class="form-stacked">
+      <input type="text" name="email" class="field-light" placeholder="{{ site.text.contact.email }}">
+      <textarea type="text" name="content" class="field-light" rows="5" placeholder="{{ site.text.contact.content }}"></textarea>
+      <input type="text" name="_gotcha" style="display:none" />
+      <button type='submit' class="button button-blue button-big mobile-block">{{ site.text.contact.submit }}</button>
+    </form>
+  {% else %}
+    <form action="https://formspree.io/{{ site.email }}" method="POST" class="form-stacked">
+      <input type="text" name="email" class="field-light" placeholder="{{ site.text.contact.email }}">
+      <textarea type="text" name="content" class="field-light" rows="5" placeholder="{{ site.text.contact.content }}"></textarea>
+      <input type="hidden" name="_next" value="{{ site.baseurl }}/thanks/" />
+      <input type="hidden" name="_subject" value="{{ site.text.contact.subject }}" />
+      <input type="text" name="_gotcha" style="display:none" />
+      <input type="submit" class="button button-blue button-big mobile-block" value="{{ site.text.contact.submit }}">
+    </form>
+  {% endif %}
+</div>
+
+{% if site.ajaxify_contact_form %}
+  {% include ajaxify_content_form.html %}
+{% endif %}

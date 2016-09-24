@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Builder Pattern
-categories: design-patterns
+category: interview
+tags: [patterns, javascript]
 ---
 Imagine how
 

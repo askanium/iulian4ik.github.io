@@ -1,14 +1,35 @@
+<a href="/">Home</a>
 {% for page in site.pages %}
+    {% if page.tags contains "interviews" %}
+        <a href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
+
+    {% if page.tags contains "heroes" %}
+        <a href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
+
     {% if page.tags contains "about" %}
         <a href="{{ page.url }}">{{ page.title }}</a>
     {% endif %}
 
-    {% if page.tags contains "gallery" %}
+    {% if page.tags contains "archive" %}
+        <a href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
+
+<!--     {% if page.tags contains "gallery" %}
+        <a href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %} -->
+    
+    {% if page.tags contains "goodies" %}
+        <a href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
+
+    {% if page.tags contains "quizzes" %}
         <a href="{{ page.url }}">{{ page.title }}</a>
     {% endif %}
     
-    {% if page.tags contains "contact" %}
+    <!-- {% if page.tags contains "contact" %}
         <a href="{{ page.url }}">{{ page.title }}</a>
-    {% endif %}
+    {% endif %} -->
 
 {% endfor %}

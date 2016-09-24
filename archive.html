@@ -1,0 +1,47 @@
+---
+layout: page
+title: Archive
+permalink: /archive/
+tags: archive
+---
+
+<h2 class="h2 center margin-top-md margin-bottom-sm">Last 20 posts</h2>
+<ul class="post-list">
+    {% for post in site.posts %}
+        {% if forloop.index < 21 %}
+        <li>
+            <h3>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </h3>
+            <span class="date">{{ post.date | date: '%B %d, %Y'}}</span>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+<!-- Archives by category -->
+<div class="archives-tag">
+  <h2 class="h2 center margin-top-md margin-bottom-sm">Archives by category</h2>
+
+  <ul class="post-list">
+      {% for category in site.categories %}
+          <li>
+              <a href="/category/{{ category[0] }}/">{{ category[0] }}</a>
+          </li>
+      {% endfor %}
+  </ul>
+</div>
+
+<!-- Archives by tag -->
+<div class="archives-tag">
+  <h2 class="h2 center margin-top-md margin-bottom-sm">Archives by tag</h2>
+
+  <ul class="post-list">
+      {% for tag in site.tags %}
+          <li>
+              <a href="/tag/{{ tag[0] }}/">{{ tag[0] }}</a>
+          </li>
+      {% endfor %}
+  </ul>
+</div>

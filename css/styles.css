@@ -63,3 +63,355 @@
   position: absolute;
   text-indent: 2px;
 }
+
+
+/*********************************/
+/******** General styles *********/
+/*********************************/
+
+.margin-top-md {
+    margin-top: 3rem;
+}
+
+.margin-top-lg {
+    margin-top: 4rem;
+}
+
+.margin-bottom-sm {
+    margin-bottom: 2rem;
+}
+
+.margin-bottom-md {
+    margin-bottom: 3rem;
+}
+
+.margin-tb-md {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+a {
+    padding-bottom: 4px;
+}
+
+.site-header a {
+    padding-bottom: 0;
+}
+
+.landing p, .landing ul {
+    font-size: 90%;
+}
+
+/*********************************/
+/******** Code highlighting *********/
+/*********************************/
+
+.highlighter-rouge {
+    padding: 2px 5px;
+    font-size: .8rem;
+    /*color: #f95020;*/
+    color: #5a5a5a;
+}
+
+
+/*******************************************/
+/******** Share buttons adjustment *********/
+/*******************************************/
+
+.share-page {
+    margin-top: 60px;
+    padding-top: 50px;
+    border-top: 1px solid #eee;
+    font-size: 90%;
+}
+
+.share-buttons-container {
+    text-align: center;
+}
+ul.share-buttons{
+    display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+ul.share-buttons li{
+  display: inline;
+  margin-right: 5px;
+}
+
+ul.share-buttons a{
+  background-image: none;
+  text-shadow: none;
+}
+
+ul.share-buttons .sr-only {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+
+/******************************/
+/******** Page styles *********/
+/******************************/
+
+.post-list {
+    list-style: none;
+    padding: .4rem 0 2rem 0;
+    margin: .2rem 0 1rem 0;
+}
+
+.post-list li:before, .post-list li:after {
+    content: " ";
+    display: table;
+}
+
+.post-list li:after {
+    clear: both;
+}
+
+.post-list li {
+    padding: .7rem 0 .6rem 0;
+    border-bottom: 1px dashed #ddd;
+    display: list-item;
+}
+
+.post-list h3 {
+    font-size: .8rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: left;
+    display: block;
+}
+
+.post-list a {
+    text-decoration: none;
+    color: #444;
+    background-image: none;
+}
+
+.post-list a:hover {
+    color: #111;
+}
+
+.post-list .date {
+    color: #aaa;
+    font-size: .7rem;
+    float: right;
+}
+
+.archives-tag {
+    border-bottom: 1px dashed #ccc;
+}
+.archives-tag:last-child {
+    border-bottom: none;
+}
+
+.archives-tag .post-list {
+    text-align: center;
+}
+
+.archives-tag .post-list li {
+    display: inline-block;
+    padding: 0;
+    margin-bottom: .1em;
+    border: 0;
+}
+
+.archives-tag .post-list a {
+    display: inline-block;
+    font-size: .7rem;
+    padding: .5rem 2rem;
+    margin-top: 2px;
+    color: #fff;
+    text-shadow: none;
+    background: #333;
+}
+
+.archives-tag .post-list a:hover {
+    background: #111;
+}
+
+/******************************/
+/******** Page styles *********/
+/******************************/
+
+.goodie-container {
+    padding-bottom: 80px;
+    border-bottom: 1px solid #eee;
+}
+.goodie-container:last-child {
+    border-bottom: none;
+}
+
+.goodie-details-bar {
+    margin-top: 20px;
+}
+
+.goodie-image {
+    margin: 10px 0 10px 20px;
+    float: right;
+}
+
+.goodie-price {
+    display: inline-block;
+    margin: 2px 20px;
+}
+
+.goodie-price .faded-out {
+    color: #aaa;
+    font-size: 90%;
+    margin-left: 5px;
+}
+.goodie-price .price-value {
+    font-weight: 700;
+    font-size: 130%;
+    color: #17aa1c;
+    margin-right: 10px;
+}
+
+.goodie-container .button, .goodie-container button {
+    font-family: 'Lato', 'PT Serif', Georgia, 'Times New Roman', serif;
+    background-color: #17aa1c;
+    color: #fff;
+    display: block;
+    float: left;
+    border: inherit;
+}
+
+.goodie-container p {
+    font-size: 90%;
+}
+
+.card {
+    position: relative;
+    display: inline-block;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+    max-width: 49%;
+}
+
+.card-img-top {
+    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.card-title {
+    margin-bottom: .75rem;
+}
+
+
+/********************************/
+/******** Footer styles *********/
+/********************************/
+
+footer {
+    margin-top: 50px;
+}
+
+footer .social-icons {
+    padding: 60px 0;
+}
+
+footer .social-icons-center {
+    text-align: center;
+}
+
+footer a {
+    color: #333;
+    font-size: 1.25rem;
+    background-image: none;
+}
+
+
+
+/******************************/
+/******** Quiz styles *********/
+/******************************/
+
+.quiz-choice {
+    display: inline-block;
+}
+
+.quiz-list-item {
+    list-style-type: none;
+}
+
+#result {
+    text-align: center;
+}
+
+#quizContent .highlighter-rouge {
+    color: inherit;
+}
+
+.question-container {
+    display: none;
+}
+
+.question-container.display-results {
+    padding: 1rem 0 .3rem 0;
+    border-top: 1px solid #eee;
+}
+/*.question-container.display-results:last-child {
+    border-bottom: none;
+}*/
+
+#result text {
+    font-size: .55rem;
+}
+
+
+/*********************************/
+/******** Landing styles *********/
+/*********************************/
+
+#mc_embed_signup{
+    background:rgb(227, 247, 247); 
+    clear:left; 
+    font:14px Helvetica,Arial,sans-serif;
+    padding: 20px;
+}
+
+.half-page-left{
+    width: 50%;
+    float: left;
+}
+
+.half-page-right{
+    width: 47%;
+    float: right;
+    margin-top: 10%;
+}
+
+.third-page-left{
+    width: 31%;
+    float: left;
+}
+
+.two-thirds-page-right{
+    width: 66%;
+    float: right;
+    /*margin-top: 3%;*/
+}
+
+.two-thirds-page-right p{
+    font-size: 105%;
+}
+
+.goodies-quote {
+    font-size: 90%;
+    padding: 10px;
+}

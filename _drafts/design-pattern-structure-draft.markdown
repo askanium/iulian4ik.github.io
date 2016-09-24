@@ -2,6 +2,7 @@
 layout: post
 title: 
 categories: design-patterns
+tags: private
 ---
 ##Intent
 

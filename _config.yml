@@ -1,8 +1,8 @@
 # Site settings
-title:       Programming For Kettles
+title:       Heroes of Programming
 email:       iulian.gulea@gmail.com
 author:      Iulian Gulea
-description: "Programming and Data Science concepts explained in a simple and clear manner (hopefully)."
+description: "Learn Programming in JavaScript and Python and basic programming concepts explained in a simple and clear manner."
 baseurl:     ""
 url:         "http://iulian4ik.github.io"
 date_format: "%b %-d, %Y"
@@ -11,7 +11,7 @@ date_format: "%b %-d, %Y"
 google_verification:
 # Use either direct GA implementation or set up GTM account
 # - using both will skew your data (leave blank to not use at all)
-google_analytics: UA-76433646-1
+google_analytics: UA-84704450-1
 google_tag_manager:
 # Bing services
 bing_verification:
@@ -19,15 +19,15 @@ bing_verification:
 # Optional features
 animated:             false
 show_related_posts:   false
-show_post_footers:    false
-show_social_icons:    false
-ajaxify_contact_form: false
+show_post_footers:    true
+show_social_icons:    true
+ajaxify_contact_form: true
 enable_mathjax: false
 extended_fonts: false
 
 # Disqus post comments
 # (leave blank to disable Disqus)
-disqus_shortname: programming-for-kettles
+disqus_shortname: heroesofprogramming
 
 # Facebook Comments plugin
 # (leave blank to disable Facebook Comments, otherwise set it to true)
@@ -36,14 +36,14 @@ facebook_appid:
 facebook_comments_number: 10
 
 # Social icons
-github_username: iulian4ik
+github_username: 
 bitbucket_username:
 stackoverflow_id: 3120525
-twitter_username: iulian4ik
+twitter_username: heroesofprog
 skype_username:
 steam_nickname:
 google_plus_id:
-linkedin_username:
+linkedin_username: iuliangulea
 angellist_username:
 medium_id:
 bitcoin_url:
@@ -93,7 +93,7 @@ text:
       sending:  'sending..'
       sent:     'Message sent!'
       error:    'Error!'
-  thanks: 'Thanks for contacting us. We will reply as soon as possible.'
+  thanks: 'Thanks for contacting me. I will reply as soon as possible.'
   og_locale: 'en_US'
 
 # Build settings
@@ -101,11 +101,37 @@ markdown:     kramdown
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:    pretty
-paginate:     4
+paginate:     8
 sass:
   compressed: true
 gems:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-archives
 # https://github.com/jekyll/jekyll/issues/2938
 exclude: [vendor]
+
+# Collections
+collections:
+  quizzes_javascript:
+    output: true
+    permalink: /quizzes/:title/
+
+jekyll-archives:
+  enabled: 
+    - categories
+    - tags
+    - year
+    - month
+  layouts: 
+    year: year-archive
+    month: month-archive
+    category: category-tag-archive
+    tag: category-tag-archive
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
