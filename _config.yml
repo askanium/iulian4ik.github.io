@@ -1,6 +1,6 @@
 # Site settings
 title:       Heroes of Programming
-email:       iulian.gulea@gmail.com
+email:       iulian@heroesofprogramming.com
 author:      Iulian Gulea
 description: "Learn Programming in JavaScript and Python and basic programming concepts explained in a simple and clear manner."
 baseurl:     ""
@@ -17,7 +17,7 @@ google_tag_manager:
 bing_verification:
 
 # Optional features
-animated:             false
+animated:             true
 show_related_posts:   false
 show_post_footers:    true
 show_social_icons:    true

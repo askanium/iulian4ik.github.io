@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Why To Learn Programming? Part 1
-description: "Analyzing pros and cons of why you would learn programming, what you need to learn programming and what are the opportunities in this field."
+description: "Analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
 permalink: /why-to-learn-programming-part-1/
-date: 2016-08-25 20:31:19
-categories: learning motivation basics
+date: 2016-09-20 12:00:00
+categories: [learning,motivation,basics]
+tags: [choices,questions]
 sharemessage: 'Have a friend that is not decided whether to learn programming or want to persuade someone to do this? Share this article with others to back up your point of view!'
 ---
 

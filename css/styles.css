@@ -98,10 +98,6 @@ a {
     padding-bottom: 0;
 }
 
-.landing p, .landing ul {
-    font-size: 90%;
-}
-
 /*********************************/
 /******** Code highlighting *********/
 /*********************************/
@@ -377,6 +373,10 @@ footer a {
 /*********************************/
 /******** Landing styles *********/
 /*********************************/
+
+.landing-container p, .landing-container ul {
+    font-size: 90%;
+}
 
 #mc_embed_signup{
     background:rgb(227, 247, 247); 
