@@ -89,6 +89,10 @@
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+.margin-tb-sm {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
 a {
     padding-bottom: 4px;
@@ -282,13 +286,21 @@ ul.share-buttons .sr-only {
     margin-right: 10px;
 }
 
-.goodie-container .button, .goodie-container button {
+.goodie-container .button, .goodie-container button, .button-goodie {
     font-family: 'Lato', 'PT Serif', Georgia, 'Times New Roman', serif;
     background-color: #17aa1c;
     color: #fff;
     display: block;
     float: left;
     border: inherit;
+}
+
+.landing-action-button {
+    padding:15px 70px;
+    /*padding-right: 50px;*/
+    float: none;
+    display: inline-block;
+    background-color: #0076df;
 }
 
 .goodie-container p {
@@ -388,6 +400,10 @@ footer a {
     font-size: 90%;
 }
 
+.landing blockquote p {
+    font-size: 1rem;
+}
+
 #mc_embed_signup{
     background:rgb(227, 247, 247); 
     clear:left; 
@@ -411,13 +427,23 @@ footer a {
     float: left;
 }
 
+.third-page-right{
+    width: 31%;
+    float: right;
+}
+
 .two-thirds-page-right{
     width: 66%;
     float: right;
     /*margin-top: 3%;*/
 }
+.two-thirds-page-left{
+    width: 66%;
+    float: left;
+    /*margin-top: 3%;*/
+}
 
-.two-thirds-page-right p{
+.slightly-bigger-font {
     font-size: 105%;
 }
 
