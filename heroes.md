@@ -126,6 +126,6 @@ tags: heroes
 <div>
     <h2 class="h2 center margin-top-md margin-bottom-sm">Heroes of Python</h2>
 
-    <img src="/assets/images/heroes/HeroesOfProgramming.png" alt="Heroes of JavaScript" />
+    <img src="/assets/images/heroes/heroes-of-programming-none.png" alt="Heroes of JavaScript" />
 
 </div>
