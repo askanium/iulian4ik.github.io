@@ -11,7 +11,7 @@ summary: "In the first article of this series, you'll meet the Master of Variabl
 
 permalink: /heroes/master-of-variables-part-1-intro/
 
-date: 2016-09-27 20:20:20
+date: 2016-09-28 20:20:20
 
 categories: [basics,variables]
 

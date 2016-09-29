@@ -9,7 +9,7 @@ summary: "The basic data types in JavaScript — Primitives. Primitive values ar
 
 permalink: /heroes/master-of-variables-part-2-primitives/
 
-date: 2016-09-27 20:20:20
+date: 2016-09-28 20:20:20
 
 categories: [basics,variables,primitives]
 

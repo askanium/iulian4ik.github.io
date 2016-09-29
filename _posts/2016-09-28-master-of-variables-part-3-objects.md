@@ -9,7 +9,7 @@ summary: "In JavaScript, objects are king. Almost everything is an object or act
 
 permalink: /heroes/master-of-variables-part-3-objects/
 
-date: 2016-09-27 20:20:20
+date: 2016-09-28 20:20:20
 
 categories: [basics,variables,objects]
 
