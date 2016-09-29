@@ -4,7 +4,7 @@ email:       iulian@heroesofprogramming.com
 author:      Iulian Gulea
 description: "Learn Programming in JavaScript and Python and basic programming concepts explained in a simple and clear manner."
 baseurl:     ""
-url:         "http://iulian4ik.github.io"
+url:         "http://blog.heroesofprogramming.com"
 date_format: "%b %-d, %Y"
 
 # Google services
