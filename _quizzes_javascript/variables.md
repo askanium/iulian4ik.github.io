@@ -91,7 +91,7 @@ title: Variables
             },
             {
                 body: '' +
-'<p>What is the length of the following string: <code class="highlighter-rouge">I am \\n a robot.</code></p>',
+'<p>What is the length of the following string: <code class="highlighter-rouge">"I am \\n a robot."</code></p>',
                 answers: [
                     '14',
                     '15',
@@ -115,10 +115,10 @@ title: Variables
             },
             {
                 body: '' +
-'<p>What will the following statement return?' +
-'<code class="highlighter-rouge">javascript\n' +
-'typeof null;  // ?\n' +
-'</code></p>',
+'<p>What will the following statement return?</p>' + 
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">typeof</span> <span class="kc">null</span><span class="p">;</span>  <span class="c1">// ?</span>\n' +
+'</code></pre>\n' +
+'</div>',
                 answers: [
                     'null',
                     'undefined',
@@ -129,7 +129,7 @@ title: Variables
             },
             {
                 body: '' +
-'<p>Is the <code class="highlighter-rouge"><span class="p">{}</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="p">{}</span></code> comparison true?</p>',
+'<p>Will the <code class="highlighter-rouge"><span class="p">{}</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="p">{}</span></code> comparison return true or false?</p>',
                 answers: [
                     'true',
                     'false',

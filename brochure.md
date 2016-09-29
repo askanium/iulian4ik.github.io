@@ -1,7 +1,7 @@
 ---
 layout: landing
 title: "6 simple tips to save 166 hours in one year"
-permalink: /courses/productivity/
+permalink: /courses/productivity-tips/
 category: courses
 tags: [productivity]
 ---
@@ -53,8 +53,9 @@ tags: [productivity]
                             <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                         </div>
                         <div class="mc-field-group">
-                            <label for="mce-FNAME">First Name </label>
-                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                            <label for="mce-FNAME">First Name  <span class="asterisk">*</span>
+                        </label>
+                            <input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
                         </div>
                         <div id="mce-responses" class="clear">
                             <div class="response" id="mce-error-response" style="display:none"></div>

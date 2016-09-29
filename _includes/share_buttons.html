@@ -1,6 +1,10 @@
 <div class="share-page">
   <!-- {{ site.text.share_buttons.text }} -->
-  {{ page.sharemessage }}
+  {% if page.sharemessage %}
+    <div class="margin-bottom-sm">
+      {{ page.sharemessage }}
+    </div>
+  {% endif %}
 
   <div class="share-buttons-container">
     <ul class="share-buttons">

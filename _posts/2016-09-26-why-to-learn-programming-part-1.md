@@ -1,11 +1,22 @@
 ---
 layout: post
+
 title: Why To Learn Programming? Part 1
-description: "Analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
+
+meta_description: "Second article on analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
+
+summary: "Second article on analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
+
 permalink: /why-to-learn-programming-part-1/
-date: 2016-09-20 12:00:00
+
+date: 2016-09-28 12:00:00
+
 categories: [learning,motivation,basics]
+
 tags: [choices,questions]
+
+keywords: [learn programming, learn to code, learn to program, programming languages, programming advice, programmer, how to learn programming, programming trends]
+
 sharemessage: 'Have a friend that is not decided whether to learn programming or want to persuade someone to do this? Share this article with others to back up your point of view!'
 ---
 
@@ -15,7 +26,7 @@ For the last several years, this year included, jobs related to programming and 
 
 Historically, we could refer to this chart from the [Google Books Ngram Viewer](https://books.google.com/ngrams/graph?content=web+development%2Csoftware+development&case_insensitive=on&year_start=1980&year_end=2008&corpus=15&smoothing=3&share=&direct_url=t4%3B%2Cweb%20development%3B%2Cc0%3B%2Cs0%3B%3BWeb%20development%3B%2Cc0%3B%3Bweb%20development%3B%2Cc0%3B%3BWeb%20Development%3B%2Cc0%3B%3BWEB%20DEVELOPMENT%3B%2Cc0%3B.t4%3B%2Csoftware%20development%3B%2Cc0%3B%2Cs0%3B%3Bsoftware%20development%3B%2Cc0%3B%3BSoftware%20Development%3B%2Cc0%3B%3BSoftware%20development%3B%2Cc0%3B%3BSOFTWARE%20DEVELOPMENT%3B%2Cc0) to see the trends of the _software development_ and _web development_ appearance in printed materials between 1980 and 2008:
 
-![Software and Web development trends](/assets/images/2016/08/why-to-learn-programming-google-ngram-chart.png)
+![Software and Web development trends](/assets/images/2016/09/why-to-learn-programming-google-ngram-chart.png)
 
 What we see here is a clear positive trend in both software and web development. Note that Google indexed over 5 million books printed between 1500 and 2008, so, unfortunately, there is no data after year 2008. However, we can infer that from that time the demand in developers only increased, as since then appeared and/or evolved many markets that require programming at their core, such as iOS and Android development, Data Science and Machine Learning at large scale, the Internet of Things and many others.
 
@@ -80,7 +91,8 @@ If you are not an avid learner, most probably you will fail to learn programming
 
 ## Competition
 
-## todo add image on how company sees the supply-demand vs how employee sees supply-demand
+![Supply-demand chart with programming jobs](/assets/images/2016/09/supply-demand.png)
+
 Although the demand is huge, the supply is also huge. And if in other jobs you compete with people from your city or country, here you compete with people from the whole world, as a programmer can work remotely. 
 
 But, there is a "but<strike>t</strike>" here. Good specialists are still in high demand (as everywhere, actually). So unless you will decide to become one of the best programmers out there, think twice whether you want to enter this saturated market.

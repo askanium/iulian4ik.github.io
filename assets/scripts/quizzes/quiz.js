@@ -52,7 +52,7 @@ function nextQuestionBtnHandler () {
         });
 
         // Show the gauge with user score
-        var score = correctAnswers / quizContent.questions.length * 100;
+        var score = (correctAnswers / quizContent.questions.length * 100).toFixed(2);
         var gauge = Gauge('#result');
         gauge.updateConfiguration();
         gauge.render();

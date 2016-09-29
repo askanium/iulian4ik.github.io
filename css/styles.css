@@ -98,6 +98,16 @@ a {
     padding-bottom: 0;
 }
 
+a.button-info-inversed {
+    font-family: 'Lato', 'PT Serif', Georgia, 'Times New Roman', serif;
+    color: #0076df;
+    background-color: #fff;
+}
+a.button-info-inversed:hover {
+    background-color: #0076df;
+    color: #fff;
+}
+
 /*********************************/
 /******** Code highlighting *********/
 /*********************************/
@@ -106,7 +116,7 @@ a {
     padding: 2px 5px;
     font-size: .8rem;
     /*color: #f95020;*/
-    color: #5a5a5a;
+    color: #3a3a3a;
 }
 
 
@@ -414,4 +424,166 @@ footer a {
 .goodies-quote {
     font-size: 90%;
     padding: 10px;
+}
+
+/* Heroes page styling */
+
+#wrapper {
+  margin: 0 auto;
+  text-align:center;
+  padding:50px 0;
+  /*margin-bottom: 20px;*/
+  font-family: 'Indie Flower', cursive;
+  height: 730px;
+}
+
+#wrapper ul {
+    padding: 0;
+}
+
+#wrapper h1, 
+#wrapper h2, 
+#wrapper h3, 
+#wrapper h4, 
+#wrapper h5, 
+#wrapper h6 {
+  font-family: 'Fredericka the Great', serif;
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+/* Index Card Styling */
+  
+ul#index_cards {
+  /*margin-top:50px;*/
+  text-align:center;
+  position: relative;
+}
+  
+ul#index_cards li {
+  background:#fff;
+  height:680px;
+  width:250px;
+  display:block;
+  float:left;
+  border:1px solid #ddd;
+  padding:20px;
+  position:absolute;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-box-shadow: 2px 2px 10px #ddd;
+  -webkit-box-shadow: 2px 2px 10px #ddd;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+#card-1 {
+  z-index:1;
+  /*left:0px;*/
+}
+  
+#card-2 {
+  z-index:2;
+  /*margin-left: 11%;
+  left: 0;
+  right: 0;*/
+  left: 95px;
+}
+
+#card-3 {
+  z-index:3;
+  /*margin-left: 22%;
+  left: 0;
+  right: 0;*/
+  left: 190px;
+}
+  
+#card-4 {
+  background-color:#69732B;
+  z-index:4;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+  
+#card-5 {
+  z-index:3;
+  /*margin-left: 45%;
+  left: 0;
+  right: 0;*/
+  right: 190px;
+}
+  
+#card-6 {
+  z-index:2;
+  /*margin-left: 56%;
+  left: 0;
+  right: 0;*/
+  right: 95px;
+}
+
+#card-7 {
+  z-index:1;
+  /*margin-left: 67%;
+  left: 0;
+  right: 0;*/
+  right: 0px;
+}
+
+/* Hover States */
+  
+ul#index_cards li:hover {
+  z-index:5;
+}
+  
+#card-1:hover {
+  -moz-transform: scale(1.1);
+     -webkit-transform: scale(1.1); 
+}
+    
+#card-2:hover {
+  -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1); 
+}
+  
+#card-3:hover {
+  -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1); 
+}
+  
+#card-4:hover {
+  -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1); 
+}
+  
+#card-5:hover {
+  -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1); 
+}
+
+#card-6:hover {
+  -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1); 
+}
+
+#card-7:hover {
+  -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1); 
+}
+
+/* Content Styling */
+  
+ul#index_cards li img {
+  /*margin-top:7px;*/
+  /*-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0px 0px 5px #aaa;
+  -webkit-box-shadow: 0px 0px 5px #aaa;*/
+}
+      
+ul#index_cards li p {
+  margin-top:4px;
+  text-align:left;
+  line-height:28px;  
 }

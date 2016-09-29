@@ -22,7 +22,7 @@ show_related_posts:   false
 show_post_footers:    true
 show_social_icons:    true
 ajaxify_contact_form: true
-enable_mathjax: false
+enable_mathjax: true
 extended_fonts: false
 
 # Disqus post comments
@@ -109,6 +109,7 @@ gems:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-archives
+  - jekyll-auto-image
 # https://github.com/jekyll/jekyll/issues/2938
 exclude: [vendor]
 
@@ -116,7 +117,7 @@ exclude: [vendor]
 collections:
   quizzes_javascript:
     output: true
-    permalink: /quizzes/:title/
+    permalink: /quizzes/js/:title/
 
 jekyll-archives:
   enabled: 
@@ -135,3 +136,6 @@ jekyll-archives:
     day: '/:year/:month/:day/'
     tag: '/tag/:name/'
     category: '/category/:name/'
+
+# Jekyll-auto-image settings
+image: /assets/images/heroes/HeroesOfProgramming.png

@@ -65,6 +65,8 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-archives (2.1.0)
       jekyll (>= 2.4)
+    jekyll-auto-image (1.1.2)
+      jekyll
     jekyll-coffeescript (1.0.1)
       coffee-script (~> 2.2)
     jekyll-feed (0.5.1)
@@ -137,6 +139,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-archives
+  jekyll-auto-image
   jekyll-seo-tag
 
 BUNDLED WITH
