@@ -54,12 +54,14 @@ function nextQuestionBtnHandler () {
         // Show the gauge with user score
         var score = (correctAnswers / quizContent.questions.length * 100).toFixed(2);
         var gauge = Gauge('#result');
+
+        score = (score == '100.00' || score == '0.00') ? parseInt(score) : score;
         gauge.updateConfiguration();
         gauge.render();
         gauge.updatePrimaryIndicator(score);
 
         // Show the feedback message under the gauge chart.
-        var feedbackMessage = score == 100 ? quizContent.feedbackMessages[score] : quizContent.feedbackMessages['<100'];
+        var feedbackMessage = score == 100 ? quizContent.feedbackMessages['100'] : quizContent.feedbackMessages['<100'];
         result.append('<div>' + feedbackMessage + '</div>');
 
         // Hide the button

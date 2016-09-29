@@ -198,6 +198,7 @@ title: Variables
                     'void',
                     'undefined',
                     'null',
+                    'it will throw an error',
                 ],
                 correctAnswer: 2
             },
@@ -221,10 +222,10 @@ title: Variables
             },
         ],
         feedbackMessages: {
-            '<100': 'Need to improve',
-            '100': 'Great!'
+            '<100': "Good! There is space for improvement for you! Check out the series of articles about the <a href='/heroes/master-of-variables-part-1-intro/'>Master of Variables</a> and come back after you've finished it. I bet you'll score higher next time!",
+            '100': "Great! You've answered all questions correctly! This is an important achievement in your journey of becoming a Hero of Programming. Keep up the good work!"
         },
-        callToAction: 'Go to the latest post.'
+        callToAction: 'In case you want to revise some information on variables in JavaScript, feel free to check out the series of posts about the <a href="/heroes/master-of-variables-part-1-intro/">Master of Variables</a>.'
     };
 </script>
 <script type="text/javascript" src="/assets/scripts/quizzes/quiz.js"></script>
