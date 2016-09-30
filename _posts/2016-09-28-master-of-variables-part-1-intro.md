@@ -24,7 +24,7 @@ sharemessage: "Liked the intro to JavaScript variables and the description of Ma
 
 Welcome to the first article in the series of three articles about variables. In this article, we will discuss how actually information is stored inside our computers and will address general concepts about variables. 
 
-Before we start, I would recommend you take the variables quiz in order to assess you current level of knowledge of variables in JavaScript. Then, at the end of this series of articles you'll take the quiz once more and see how much you've learned. Or just continue reading on, but note that then you won't see your progress.
+Before we start, I would recommend you take the [variables quiz](/quizzes/js/variables/) in order to assess you current level of knowledge of variables in JavaScript. Then, at the end of this series of articles you'll take the quiz once more and see how much you've learned. Or just continue reading on, but note that then you won't see your progress.
 
 # Information on your computer
 
@@ -32,7 +32,7 @@ All information that we have on our computers, from documents, to photos, to mov
 
 A bit \(**bi**nary digi**t**\) is a basic unit of information. It can have one of two values. This simplicity allows the implementation of bits in various forms using any two-state device.
 
-The two values most often are represented as either 0 or 1, but can also be represented as true\/false, yes\/no, on\/off, high\/low, bright\/dark, etc. For instance, information on a CD\/DVD is encoded as a series of pits on its surface, that upon reading are transformed into a series of zeros and ones.
+The two values most often are represented as either 0 or 1, but can also be represented as true/false, yes/no, on/off, high/low, bright/dark, etc. For instance, information on a CD/DVD is encoded as a series of pits on its surface, that upon reading are transformed into a series of zeros and ones.
 
 Inside our computers, bits take form of electrical charges. High charges represent a 1 and low charges represent a 0.
 
@@ -115,7 +115,20 @@ var earthDiameter = 12756.2;  // in km
 
 As you can see, a variable can be defined either without any value, or it can be assigned a value using the **assignment operator** `=`. If to continue the analogy of boxes, you can either create a box without anything in it (the first scenario from above), or you can create a box and put something in it (the second scenario).
 
-And this is all that you need to do in order to define a variable in JavaScript. There are, however, some rules by which you need to define variable names.
+You can also define several variables in a row, using a single `var` keyword and separating the variables with commas.
+
+```javascript
+var earthSize, earthPopulation = '> 7 billion', highestPoint;
+
+var earth,
+    mars,
+    saturn = {},
+    jupiter;
+```
+
+Note that commas are important when defining several variables at once and skipping a comma results in an error.
+
+This is all that you need to do in order to define a variable in JavaScript. There are, however, some rules by which you need to define variable names.
 
 ## Variable naming rules
 
