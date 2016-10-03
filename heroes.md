@@ -1,8 +1,11 @@
 ---
 layout: page
 title: Heroes
+image: /assets/images/heroes/heroes-of-programming-none.png
 permalink: /heroes-of-programming/
 tags: heroes
+meta_description: "Meet the Heroes of Programming, those who help make the lives of millions of people better. You can, too, become one of the Heroes of Programming. All you need to do is learn programming and do something useful for the society."
+summary: "Meet the Heroes of Programming, those who help make the lives of millions of people better. You can, too, become one of the Heroes of Programming. All you need to do is learn programming and do something useful for the society."
 ---
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 
