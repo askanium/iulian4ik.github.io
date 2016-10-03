@@ -5,9 +5,9 @@ title: Why To Learn Programming? Part 1
 
 image: /assets/images/2016/09/why-to-learn-programming-google-ngram-chart.png
 
-meta_description: "Second article on analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
+meta_description: "First article on analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
 
-summary: "Second article on analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
+summary: "First article on analyzing pros and cons of why you would learn programming, what you need to learn programming and what opportunities does learning to code provide you."
 
 permalink: /why-to-learn-programming-part-1/
 
