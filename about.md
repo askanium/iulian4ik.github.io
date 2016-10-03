@@ -7,9 +7,13 @@ tags: about
 
 Whether you are starting to learn programming or already have some experience with it, sometimes it is hard to stay focused and keep learning all the things, new and old, related to the language, frameworks, algorithms and so on...
 
-**Heroes of Programming** is the place where you will improve your skills and learn new useful information. And because there is so much information in the world wide web, in order to make your learning experience more engaging on this site, you will be accompanied by some Heroes. Who are them and what they do you will find by exploring the site. 
+**Heroes of Programming** is the place where you will improve your skills and learn new useful information. And because there is so much information in the world wide web, in order to make your learning experience more engaging on this site, you will be accompanied by some Heroes. Who are they and what they do you will find out by exploring the site. 
 
-Until then, remember that today's heroes help millions of people not by a sword or a spear, but by writing programs. And you have all chances to become one of them. 
+Just note that today, heroes do not fight monsters and dragons. Today's most common "enemies" are tight deadlines, pesky clients, ambiguity and complexity. We have to deal with them on a daily basis, therefore it's important to have "weapons" of our own with which to fight them.
+
+![Today's Monsters we need to fight](/assets/images/heroes/todays-monsters.png)
+
+Explore and learn about the **Heroes of Programming** and remember that today's heroes help millions of people not by fighting with a sword or a spear, but by writing programs. And you have all chances to become one of them. 
 
 **Become a Hero of Programming!**
 
