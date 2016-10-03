@@ -60,6 +60,12 @@ console.log(earthOrder);       // 3
 console.log(earthSatellites);  // 1
 ```
 
+Here's a visual explanation to what happens when you work with primitives.
+
+![How primitives are stored](/assets/images/2016/09/storing-primitives.png)
+
+When `answer` is defined and assigned the value `42`, it is being stored in memory at a specific memory address. Then, when we assign the value of the `answer` variable to the newly declared `number` variable, the value is _copied_ into a new memory address that refers to the `number` variable. We have 2 values that represent the number 42 in two different memory addresses that do not have any connection. Next, even if we define another variable with the same 42 value, it will still have its own unique address and it won't be connected to any other variables.
+
 In other words, when the Master of Variables creates a variable with a primitive value assigned to it, that value is "inside the box's variable" and whenever you assign that variable to another variable, the contents of the first box are copied into the second one. For instance, you can't have a number `2` in two boxes simultaneously. When you create a variable with `var x = 2;`, the `x` box contains value `2`. Then, when you write `var y = x;`, the Master of Variables _copies_ the value of `x` variable into the `y` variable. In the end you have two variables with two **different** values of `2`. And when you change the value in one variable, it doesn't affect the value in the other one.
 
 The situation with referring to values is different when working with objects though. We will address this example after several sections.
@@ -169,15 +175,6 @@ The second special number is quite the opposite of a number and is called a "Not
 Infinity - Infinity  // NaN
 ```
 
-### Numbers in other base
-
-You can also represent numbers in base 16. For this, prepend `0x` before the hexadecimal number.
-
-```javascript
-var x = 0xFC;  // 252 in decimal
-var y = 0x93;  // 147 in decimal
-```
-
 ### The Number data type
 
 All these numbers, although different \(integers, floats, in base 16\) are of the same "number" data type. They are all numbers.
@@ -186,7 +183,6 @@ All these numbers, although different \(integers, floats, in base 16\) are of th
 typeof 2016;      // "number"
 typeof 12.3;      // "number"
 typeof 1e10;      // "number"
-typeof 0xaf;      // "number"
 typeof Infinity;  // "number"
 typeof NaN;       // "number"
 ```
@@ -280,7 +276,7 @@ robot.length;  // 15 (a space and the '\n' character that counts as 1 character)
 Sometimes you will need to get the character at a specific position in the string. To do that, use the square brackets with the position of the character you want to get. Note that in JavaScript the ordering of the characters start at zero. Thus, the first element in the string is obtained at the 0th index.
 
 ```javascript
-var greeting = 'Hello! How are you?";
+var greeting = 'Hello! How are you?';
 
 console.log(greeting[0]);  // 'H'
 console.log(greeting[5]);  // '!'
@@ -332,7 +328,7 @@ There is a special value for the variables that have no value in JavaScript. It 
 ```javascript
 var myVariable;  
 
-console.log(myVariable);  // myVariable has the value "undefined"
+console.log(myVariable);  // "undefined"
 ```
 
 `undefined` is a separate data type in JavaScript, meaing that you can use `typeof` operator to find out whether a variable's type is `undefined`.

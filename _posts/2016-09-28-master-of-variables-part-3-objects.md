@@ -65,9 +65,13 @@ This has to do with the way object variables are stored in JavaScript.
 
 In JavaScript, objects are stored **by reference**. This means that a variable to which we have assigned an object actually does not hold that object in it. What it holds is just a _reference_, a pointer to that object in the memory. This has important and very interesting implications when programming in JavaScript, which we will address in the following chapters.
 
+![How objects are stored](/assets/images/2016/09/storing-objects.png)
+
+When you define an object, it is stored in memory, but the variable to which you assign that object stores not the object itself, but the address of that object in memory. Therefore it is said that objects in JavaScript are stored _by reference._ Then, when you assign the value of `moon` to the newly created `satellite`, a copy of its value is created and assigned to `satellite`. But because these values point to the same memory address, modifications to any of these variables will result in changing the same object. Then, even if you create another object with the same data as an existing one, that object is being stored in another location in memory and the address of that location is assigned to the variable `io`. Therefore, if you will compare `io` with `moon`, you will get false, as `0x330000` does not equal `0xC43000`.
+
 In contrast, privitives are stored **by value**, which means that the variable holds the actual value that we have assigned to it.
 
-So, even if we have this comparison: `{} == {}`, the result will be `false`, because these are _two different objects_. When you write the first empty object, it holds a reference to it and the second object has _another_ reference, as it is another object.
+So, even if we have this comparison: `{} == {}`, the result will be `false`, because these are _two different objects_. When you write the first empty object, it is created and stored in memory under one address and then the second object is created and stored in memory under _another_ address. And since these addresses are different, the equality returns `false`.
 
 ### Comparing pens and houses
 

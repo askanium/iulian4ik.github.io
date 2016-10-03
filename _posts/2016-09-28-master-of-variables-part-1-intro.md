@@ -93,7 +93,7 @@ What is the largest number that can be expressed using a single byte?
 
 ![Master of Variables greets you in binary language](/assets/images/2016/09/MasterOfVariables-HelloWorld.png)
 
-I bet you can read it, but how much time will it take you to do that? We all know heroes that fight monsters or forces of darkness, but there are also heroes whose work we don't see until they stop doing it. The **Master of Variables** is one of such heroes. He instantly translates from zeroes and ones to the primitive language that we humans can understand. However, behind this seemingly efortless process hides hardwork of keeping track of myriad of things. But Master of Variables isn't unarmed in his tough duty. As he isn't an ordinary hero, his secret weapon is also special. It is... a book! Oh, sorry, it's THE Book! The Alteration Language Specifications Book that contains everything he needs to know about any type of variable. It includes the specifications of all data types with all their methods, properties and behavior. With the help of his book, the Master of Variables provides other heroes with the necessary variables.
+I bet you can read it, but how much time will it take you to do that? We all know heroes that fight monsters or forces of darkness, but there are also heroes whose work we don't see until they stop doing it. The **Master of Variables** is one of such heroes. He instantly translates from zeroes and ones to the primitive language that we humans can understand. However, behind this seemingly efortless process hides hardwork of keeping track of myriad of things. But Master of Variables isn't unarmed in his tough duty. As he isn't an ordinary hero, his secret weapon is also special. It is... a book! Oh, sorry, it's THE Book! _The Alteration Language Specifications Book_ that contains everything he needs to know about any type of variable. It includes the specifications of all data types with all their methods, properties and behavior. With the help of his book, the Master of Variables provides other heroes with the necessary variables.
 
 One thing that is important to know is that the variables created by the Master of Variables are universal — they can hold any type of data and they can change their values at any time with any other type of data. You can think these variables as being boxes that hold data inside them. 
 
@@ -234,7 +234,7 @@ console.log(speed);     // ReferenceError: speed is not defined
 console.log(diameter);  // 4303890
 ```
 
-Even if the `diameter` variable was defined inside the function, because it wasn't defined with the `var` keyword, it became a global variable. This is a bad practice, therefore do not use it. Instead, always declare your variables using the `var` keyword.
+Even if the `diameter` variable was defined inside the function, because it wasn't defined with the `var` keyword, it became a global variable. This is a bad practice for reasons we will discuss in later chapters, therefore do not use it. Instead, always declare your variables using the `var` keyword.
 
 # Data Types
 
@@ -257,4 +257,4 @@ In order to find out the data type of a variable, use the `typeof` operator.
 typeof 42;  // "number"
 ```
 
-In the [second article](/heroes/master-of-variables-part-2-primitives/) of this series we will discuss in detail several data types from the list above and namely: Numbers, Strings, Booleans and Undefined. These are also called **primitive data types.** Find out why in the next article!
+In the second article of this series we will discuss in detail several data types from the list above and namely: Numbers, Strings, Booleans and Undefined. These are also called **primitive data types.** Find out why in the [next](/heroes/master-of-variables-part-2-primitives/) article!
