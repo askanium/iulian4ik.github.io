@@ -52,10 +52,10 @@ function nextQuestionBtnHandler () {
         });
 
         // Show the gauge with user score
-        var score = (correctAnswers / quizContent.questions.length * 100).toFixed(2);
+        var score = (correctAnswers / quizContent.questions.length * 100).toFixed(1);
         var gauge = Gauge('#result');
 
-        score = (score == '100.00' || score == '0.00') ? parseInt(score) : score;
+        score = (score == '100.0' || score == '0.0') ? parseInt(score) : score;
         gauge.updateConfiguration();
         gauge.render();
         gauge.updatePrimaryIndicator(score);
