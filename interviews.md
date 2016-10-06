@@ -6,11 +6,11 @@ tags: interviews
 ---
 
 <div>
-    <h2 class="h2 center margin-top-md margin-bottom-sm">JavaScript</h2>
+    <h2 class="h2 center margin-top-md margin-bottom-sm">Heroes of JavaScript</h2>
 
     <ul class="post-list">
         {% for post in site.posts %}
-            {% if post.categories contains 'interview' and post.tags contains 'javascript' %}
+            {% if post.categories contains 'interview' and post.categories contains 'JavaScript' %}
                 {% assign js_interviews = true %}
                 <li>
                     <h3>
@@ -27,11 +27,11 @@ tags: interviews
 </div>
 
 <div>
-    <h2 class="h2 center margin-top-md margin-bottom-sm">Python</h2>
+    <h2 class="h2 center margin-top-md margin-bottom-sm">Heroes of Python</h2>
 
     <ul class="post-list">
         {% for post in site.posts %}
-            {% if post.categories contains 'interview' and post.tags contains 'python' %}
+            {% if post.categories contains 'interview' and post.categories contains 'Python' %}
                 {% assign python_interviews = true %}
                 <li>
                     <h3>
