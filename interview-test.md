@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 
 title: "Hero of the week: Vlad Tribusean"
 
