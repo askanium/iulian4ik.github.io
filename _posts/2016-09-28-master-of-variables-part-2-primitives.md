@@ -13,7 +13,7 @@ date: 2016-09-28 20:20:20
 
 categories: [basics,variables,primitives]
 
-tags: ["Heroes of Programming","Master of Variables"]
+tags: ["heroes-of-programming","master-of-variables"]
 
 keywords: [learn javascript, learn to code, learn programming, learn to program, javascript primitives, data types, javascript number, javascript string, javascript boolean, javascript null, javascript undefined]
 

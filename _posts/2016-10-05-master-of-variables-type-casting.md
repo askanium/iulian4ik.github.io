@@ -13,9 +13,9 @@ permalink: /heroes/js/master-of-variables-on-type-conversion-in-javascript/
 
 date: 2016-10-05 12:00:00
 
-categories: [basics,variables,type conversion]
+categories: [basics,variables,type-conversion]
 
-tags: ["Heroes of Programming","Master of Variables"]
+tags: ["heroes-of-programming","master-of-variables"]
 
 keywords: [learn javascript, learn to code, learn programming, learn to program, type casting, type conversion, objects, primitives, data types, javascript array, array]
 
