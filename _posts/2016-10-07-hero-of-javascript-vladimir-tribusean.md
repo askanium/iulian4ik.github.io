@@ -11,7 +11,7 @@ permalink: /interviews/javascript-heroes/vladimir-tribusean/
 
 date: 2016-10-07 08:55:00
 
-categories: [interview,JavaScript]
+categories: [interview,javascript]
 
 keywords: [learn to code, learn programming, javascript, interview, personal story, javascript programmer]
 
