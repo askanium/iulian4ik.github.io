@@ -99,7 +99,7 @@ All this means that JavaScript is widely adopted and used and that you will defi
 
 So, JavaScript has definitely a bright future. Due to its nature, today you can know only one programming language (JavaScript) and be able to build fully functional complex projects and enjoy it in the process. Are you ready for it? 
 
-If you are a complete newbie in JavaScript, become a _Hero of Programming_ and check what [Heroes of Programming](/heroes-of-programming/) are there in JavaScript.
+If you are a complete newbie in JavaScript, become a **Hero of Programming** and check what [Heroes of Programming](/heroes-of-programming/) are there in JavaScript.
 
 In case you already know JavaScript, feel free to browse this site for interesting information.
 
