@@ -112,6 +112,7 @@ gems:
   - jekyll-seo-tag
   - jekyll-archives
   - jekyll-auto-image
+  - jekyll-sitemap
 # https://github.com/jekyll/jekyll/issues/2938
 exclude: [vendor]
 

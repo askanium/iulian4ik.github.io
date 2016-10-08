@@ -141,6 +141,7 @@ DEPENDENCIES
   jekyll-archives
   jekyll-auto-image
   jekyll-seo-tag
+  jekyll-sitemap
 
 BUNDLED WITH
    1.11.2
