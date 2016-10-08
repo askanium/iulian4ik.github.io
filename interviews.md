@@ -10,7 +10,7 @@ tags: interviews
 
     <ul class="post-list">
         {% for post in site.posts %}
-            {% if post.categories contains 'interview' and post.categories contains 'JavaScript' %}
+            {% if post.categories contains 'interview' and post.categories contains 'javascript' %}
                 {% assign js_interviews = true %}
                 <li>
                     <h3>
@@ -31,7 +31,7 @@ tags: interviews
 
     <ul class="post-list">
         {% for post in site.posts %}
-            {% if post.categories contains 'interview' and post.categories contains 'Python' %}
+            {% if post.categories contains 'interview' and post.categories contains 'python' %}
                 {% assign python_interviews = true %}
                 <li>
                     <h3>
