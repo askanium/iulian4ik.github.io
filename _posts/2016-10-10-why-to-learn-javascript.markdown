@@ -7,7 +7,7 @@ image: /assets/images/2016/10/signs-javascript.png
 
 meta_description: "Ever thought to learn JavaScript programming language but wasn't sure about it? Becoming a JavaScript programmer was never so big of an opportunity as it is now. It's easy, popular and you can do a lot of awesome things with it."
 
-summary: "Becoming a JavaScript programmer was never so big of an opportunity as it is now. It's easy, popular and ..."
+summary: "Becoming a JavaScript programmer was never so big of an opportunity as it is now. It's easy, popular and you can do a lot of awesome things with it."
 
 permalink: /why-to-learn-javascript/
 
