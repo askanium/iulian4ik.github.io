@@ -1,17 +1,30 @@
 ---
 layout: post
+
 title: Why To Learn JavaScript?
-description: "Analyzing pros and cons of why to learn JavaScript programming language. Becoming a JavaScript programmer was never so big of an opportunity as it is now. It's easy, popular and ..."
+
+image: /assets/images/2016/10/signs-javascript.png
+
+meta_description: "Ever thought to learn JavaScript programming language but wasn't sure about it? Becoming a JavaScript programmer was never so big of an opportunity as it is now. It's easy, popular and ..."
+
+summary: "Becoming a JavaScript programmer was never so big of an opportunity as it is now. It's easy, popular and ..."
+
 permalink: /why-to-learn-javascript/
-date: 2016-09-09 20:31:19
-category: javascript
-tags: [motivation,basics,why]
+
+date: 2016-10-10 12:00:00
+
+categories: [learning,motivation,basics,javascript]
+
+tags: [choices,questions]
+
+keywords: [learn javascript,javascript,js,why to learn,career opportunities]
+
 sharemessage: 'Have a friend that is not decided whether to learn JavaScript or want to persuade someone to do this? Share this article with others to back up your point of view!'
 ---
 
 There are so many programming languages out there. [693](https://en.wikipedia.org/wiki/List_of_programming_languages), to be more precise. Each of them has its own strengths and weaknesses, own users and own communities. Why then would someone choose to learn JavaScript out of all these languages? I invite you to find it out.
 
-![Learn JavaScript sign](/assets/images/2016/09/signs-javascript.png)
+!["Learn JavaScript" sign](/assets/images/2016/10/signs-javascript.png)
 
 ## Easy to get started
 
@@ -19,22 +32,22 @@ Yep. It is probably one of the easiest programming languages to get started with
 
 ### Setting up the development environment
 
-In order to start coding in JavaScript, all you need is a browser and a text editor. Usually we have several of each of them on our computers. You do not need to set up any development environment to start using JavaScript. As a specific example, if you are viewing this page in Chrome or Firefox, right-click on this page and select **Inspect / Inspect Element**, then in Console paste the following code:
+In order to start coding in JavaScript, all you need is a browser and a text editor. Usually we have several of each of them on our computers. You do not need to set up any development environment to start using JavaScript. As a specific example, if you are viewing this page in Chrome or Firefox, right-click on this page and select **Inspect / Inspect Element**, then in Console paste the following code and press Enter:
 
 ```javascript
 var color = 'red';
-var headers = document.getElementsByTagName('h2');
+var paragraphs = document.getElementsByTagName('p');
 
-for (var i = 0, nr = headers.length; i < nr; i++) { 
-    headers[i].style.color = color;
+for (var i = 0, nr = paragraphs.length; i < nr; i++) { 
+    paragraphs[i].style.color = color;
 }
 ```
 
 Now paste this code to return it back to normal.
 
 ```javascript
-for (var i = 0, nr = headers.length; i < nr; i++) { 
-    headers[i].style.color = 'inherit';
+for (var i = 0, nr = paragraphs.length; i < nr; i++) { 
+    paragraphs[i].style.color = 'inherit';
 }
 ```
 
@@ -54,7 +67,7 @@ Here you see your work almost immediately. You receive a pleasant feeling of sat
 
 You wrote a piece of code and you saw the change it made. That's really rewarding.
 
-**Programming is short term.** Any code that you write affects in a way your program. However, working on a project as a programmer is long-term. You have to write code that will be easy to maintain. But this is a topic for another post.
+**Coding is short term.** Any code that you write affects your program instantly. However, working on a project as a programmer is long-term. You have to write code that will be easy to maintain when reviewing it in several weeks or months. But this is a topic for another post.
 
 ## Easy to understand the basics
 
@@ -97,7 +110,7 @@ All this means that JavaScript is widely adopted and used and that you will defi
 
 ## Conclusion
 
-So, JavaScript has definitely a bright future. Due to its nature, today you can know only one programming language (JavaScript) and be able to build fully functional complex projects and enjoy it in the process. Are you ready for it? 
+JavaScript definitely has a bright future. Due to its nature, today you can know only one programming language (JavaScript) and be able to build fully functional complex projects and enjoy it in the process. Are you ready for it? 
 
 If you are a complete newbie in JavaScript, become a **Hero of Programming** and check what [Heroes of Programming](/heroes-of-programming/) are there in JavaScript.
 
