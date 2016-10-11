@@ -1,103 +1,112 @@
-var responses = [];
-var correctAnswers = quizContent.questions.length;
-var quizContainer = $('#quizContent');
-var result = $('<div id="result" class="margin-tb-md"></div>'); //$('#result');
-var button = $('#nextQuestion');
-var currentQuestion;
+window.quiz = function (contentDivId, content) {
 
-quizContainer.append(result);
+    var quizContainer = $('#'+contentDivId);
+    var result = $('<div id="result_' + contentDivId + '" class="gauge margin-tb-md"></div>');
+    var button = $('<button id="nextQuestion_' + contentDivId + '" disabled="true">Next</button>');
+    var responses = [];
+    var quizContent = content;
+    var correctAnswers = content.questions.length;
+    var currentQuestion;
 
-generateAllQuestionsHTML();
+    button.on('click', nextQuestionBtnHandler);
 
-currentQuestion = $('#question0');
-currentQuestion.fadeIn();
+    quizContainer.append(result);
+    generateAllQuestionsHTML();
 
-result.text('1/' + quizContent.questions.length);
+    quizContainer.append(button);
 
+    currentQuestion = $('#question0_'+contentDivId);
+    currentQuestion.fadeIn();
 
-///////////////
-// Functions //
-///////////////
+    result.text('1/' + quizContent.questions.length);
 
-function nextQuestionBtnHandler () {
-    var selectedChoice = currentQuestion.find('input:checked');
-    responses.push(selectedChoice.val());
-    currentQuestion.hide();
+    ///////////////
+    // Functions //
+    ///////////////
 
-    if ( responses.length < quizContent.questions.length ) {
-        currentQuestion = $('#question' + responses.length);
-        currentQuestion.show();
-        result.text(responses.length + 1 + '/' + quizContent.questions.length);
-        button.attr('disabled', true);
-    } else {
-        // Remove question counter text
-        result.text('');
+    function nextQuestionBtnHandler () {
+        var selectedChoice = currentQuestion.find('input:checked');
+        responses.push(selectedChoice.val());
+        currentQuestion.hide();
 
-        // Display each question and color into corresponding colors each answer
-        $('.question-container').each(function (i) {
-            var elem = $(this);
-            var selectedChoice = elem.find('li:eq(' + responses[i] + ')');
-            var correctChoice = elem.find('li:eq(' + quizContent.questions[i].correctAnswer + ')');
-            correctChoice.css('color', 'green');
-            correctChoice.css('font-weight', 'bold');
+        if ( responses.length < quizContent.questions.length ) {
+            currentQuestion = $('#question' + responses.length + '_' + contentDivId);
+            currentQuestion.show();
+            result.text(responses.length + 1 + '/' + quizContent.questions.length);
+            button.attr('disabled', true);
+        } else {
+            // Remove question counter text
+            result.text('');
 
-            if (quizContent.questions[i].correctAnswer != responses[i]) {
-                correctAnswers -= 1;
-                selectedChoice.css('color', 'red');
-                selectedChoice.css('font-weight', 'bold');
-            }
+            // Display each question and color into corresponding colors each answer
+            $('#' + contentDivId + ' .question-container').each(function (i) {
+                var elem = $(this);
+                var selectedChoice = elem.find('li:eq(' + responses[i] + ')');
+                var correctChoice = elem.find('li:eq(' + quizContent.questions[i].correctAnswer + ')');
+                correctChoice.css('color', 'green');
+                correctChoice.css('font-weight', 'bold');
 
-            elem.addClass('display-results');
-            elem.show();
-        });
+                if (quizContent.questions[i].correctAnswer != responses[i]) {
+                    correctAnswers -= 1;
+                    selectedChoice.css('color', 'red');
+                    selectedChoice.css('font-weight', 'bold');
+                }
 
-        // Show the gauge with user score
-        var score = (correctAnswers / quizContent.questions.length * 100).toFixed(1);
-        var gauge = Gauge('#result');
+                elem.addClass('display-results');
+                elem.show();
+            });
 
-        score = (score == '100.0' || score == '0.0') ? parseInt(score) : score;
-        gauge.updateConfiguration();
-        gauge.render();
-        gauge.updatePrimaryIndicator(score);
+            // Show the gauge with user score
+            var score = (correctAnswers / quizContent.questions.length * 100).toFixed(1);
+            var gauge = Gauge('#result_'+contentDivId);
 
-        // Show the feedback message under the gauge chart.
-        var feedbackMessage = score == 100 ? quizContent.feedbackMessages['100'] : quizContent.feedbackMessages['<100'];
-        result.append('<div>' + feedbackMessage + '</div>');
+            score = (score == '100.0' || score == '0.0') ? parseInt(score) : score;
+            gauge.updateConfiguration();
+            gauge.render();
+            gauge.updatePrimaryIndicator(score);
 
-        // Hide the button
-        button.hide();
+            // Show the feedback message under the gauge chart.
+            var feedbackMessage = score == 100 ? quizContent.feedbackMessages['100'] : quizContent.feedbackMessages['<100'];
+            result.append('<div><strong>' + feedbackMessage + '</strong></div>');
 
-        // Add the call to action message
-        quizContainer.append(quizContent.callToAction);
+            // Hide the button
+            button.hide();
+
+            // Add the call to action message
+            quizContainer.append(quizContent.callToAction);
+        }
     }
-}
 
-function generateAllQuestionsHTML () {
-    quizContent.questions.forEach(function (question, i) {
-        quizContainer.append(generateQuestionHTML(question, i));
-    });
-}
-
-function generateQuestionHTML (question, questionNr) {
-    var questionWrapper = $('<div id="question' + questionNr + '" class="question-container"></div>');
-    var answersWrapper = $('<div></div>');
-    var answersList = $('<ul></ul>');
-    questionWrapper.append(question.body);
-    questionWrapper.append(answersWrapper);
-    answersWrapper.append(answersList);
-    question.answers.forEach(function (answer, i) {
-        var li = $('<li class="quiz-list-item"></li>');
-        var label = $('<label></label>');
-        var choice = $('<input type="radio" class="quiz-choice" name="answer' + questionNr + '" value="' + i + '"/>');
-
-        choice.on('click', function () {
-            button.attr('disabled', false);
+    function generateAllQuestionsHTML () {
+        quizContent.questions.forEach(function (question, i) {
+            quizContainer.append(generateQuestionHTML(question, i));
         });
+    }
 
-        li.append(label);
-        label.append(choice);
-        label.append(answer);
-        answersList.append(li);
-    });
-    return questionWrapper;
-}
+    function generateQuestionHTML (question, questionNr) {
+        var questionWrapper = $('<div id="question' + questionNr + '_' + contentDivId + '" class="question-container"></div>');
+        var answersWrapper = $('<div></div>');
+        var answersList = $('<ul></ul>');
+        questionWrapper.append(question.body);
+        questionWrapper.append(answersWrapper);
+        answersWrapper.append(answersList);
+        question.answers.forEach(function (answer, i) {
+            var li = $('<li class="quiz-list-item"></li>');
+            var label = $('<label></label>');
+            var choice = $('<input type="radio" class="quiz-choice" name="' + contentDivId + '_answer' + questionNr + '" value="' + i + '"/>');
+
+            choice.on('click', function () {
+                button.attr('disabled', false);
+            });
+
+            li.append(label);
+            label.append(choice);
+            label.append(answer);
+            answersList.append(li);
+        });
+        return questionWrapper;
+    }
+
+    return createQuiz;
+
+};

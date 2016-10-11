@@ -367,7 +367,7 @@ footer a {
     list-style-type: none;
 }
 
-#result {
+.gauge {
     text-align: center;
 }
 
@@ -387,7 +387,7 @@ footer a {
     border-bottom: none;
 }*/
 
-#result text {
+.gauge text {
     font-size: .55rem;
 }
 

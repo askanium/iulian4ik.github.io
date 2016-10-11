@@ -1,26 +1,42 @@
 ---
 layout: post
+
 title: Function Expressions vs Function Declarations
-description: "What's the difference?"
+
+image: '/assets/images/2016/10/function-expression-vs-function-declaration.png'
+
+meta_description: "We all use Function Expressions and Function Declarations in our code, but do you know the difference between them? Challenge yourself with a quiz and then learn what you missed out."
+
+summary: "I bet you use both Function Expressions and Function Declarations in your code, but do you know the difference? Challenge yourself with a quiz and then learn what you missed out."
+
 permalink: /function-expressions-vs-function-declarations/
-date: 2016-09-15 20:31:19
-category: "javascript"
-tags: [basics, functions]
+
+date: 2016-10-12 12:00:00
+
+categories: [javascript,learning,intermediate,functions]
+
+tags: [function-expressions,function-declarations]
+
+keywords: [learn to code,learn javascript,javascript,js,javascript functions,function expressions,function declarations]
+
 sharemessage: 'Found out something new? Share this article to let others know function expressions and function declarations are not that complicated.'
 ---
 
+![Function Expression vs Function Declaration article image](/assets/images/2016/10/function-expression-vs-function-declaration.png)
+
 Have you heard about the two ways of declaring a function in JavaScript? Did you use them? Let's check what you know already by taking this short quiz:
 
-<div id="quizContent"></div>
+<div id="quizContentBefore"></div>
 
-<button id="nextQuestion" disabled="true" onclick="nextQuestionBtnHandler();">Next</button>
+<!-- <button id="nextQuestion" disabled="true" onclick="nextQuestionBtnHandler();">Next</button> -->
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="../assets/scripts/charts/gauge.js"></script>
+<script type="text/javascript" src="../assets/scripts/quizzes/quiz.js"></script>
 <script type="text/javascript">
 'use strict';
 
-    var quizContent = {
+    var quizContentBefore = {
         questions: [
             {
                 body: '' + 
@@ -124,11 +140,10 @@ Have you heard about the two ways of declaring a function in JavaScript? Did you
 '</div>',
                 answers: [
                     'gigantic',
-                    'enormous',
                     'undefined',
                     'it will throw an error'
                 ],
-                correctAnswer: 3
+                correctAnswer: 2
             },
             {
                 body: '' + 
@@ -141,7 +156,6 @@ Have you heard about the two ways of declaring a function in JavaScript? Did you
 '</div>',
                 answers: [
                     'gigantic',
-                    'enormous',
                     'undefined',
                     'it will throw an error'
                 ],
@@ -149,110 +163,25 @@ Have you heard about the two ways of declaring a function in JavaScript? Did you
             },
         ],
         feedbackMessages: {
-            '<100': 'Need to improve',
-            '100': 'Great!'
+            '<100': 'Looks like you are not sure 100% of your answers. Read on to find out more about similarities and differences between function expressions and function declarations!',
+            '100': 'You\'re pretty good at this stuff, huh? Good job! However, you can read on to keep your knowledge refreshed on this topic ;)'
         },
-        callToAction: 'Go to the latest post.'
+        callToAction: 'Read on to learn more about function expressions and function declarations.'
     };
+    quiz('quizContentBefore', quizContentBefore);
 </script>
-<script type="text/javascript" src="../assets/scripts/quizzes/quiz.js"></script>
-
-<!-- #### Question 1:
-
-```javascript
-function universeIs () {
-    function dimension () {
-        return 'gigantic';
-    }
-    return dimension();
-    function dimension () {
-        return 'enormous';
-    }
-}
-console.log(universeIs());
-```
-
-#### Question 2:
-
-```javascript
-console.log(universeIs());
-function universeIs () {
-    var dimension = function () {
-        return 'gigantic';
-    };
-    return dimension();
-    var dimension = function () {
-        return 'enormous';
-    };
-}
-```
-
-#### Question 3:
-
-```javascript
-function universeIs () {
-    var dimension = function () {
-        return 'gigantic';
-    };
-    return dimension();
-    var dimension = function () {
-        return 'enormous';
-    };
-}
-console.log(universeIs());
-```
-
-#### Question 4:
-
-```javascript
-function universeIs () {
-    return dimension();
-    var dimension = function () {
-        return 'gigantic';
-    };
-    var dimension = function () {
-        return 'enormous';
-    };
-}
-console.log(universeIs());
-```
-
-#### Question 5:
-
-```javascript
-function universeIs () {
-    return 'gigantic';
-}();
-```
-
-#### Question 6:
-
-```javascript
-var universeSize = function () {
-    return 'gigantic';
-}();
-console.log(universeSize);
-```
-
-
-Now, if your answers differ from the following:
-
-1. `'enormous'`
-2. `'gigantic'`
-3. `'gigantic'`
-4. `TypeError: dimension is not a function`
-5. `SyntaxError: Unexpected token )`
-6. `gigantic`
-
-then you will find more new and interesting things than those who answered correctly to all these questions (but they will find interesting information as well). -->
 
 ## Similarities
+
+![Function Expression and Function Declaration similarities image](/assets/images/2016/10/function-expression-vs-function-declaration-comparation-similarities.png)
 
 Let's start with similarities: they are both functions. 
 
 Functions declared using these two methods (expression and declaration) do not differ in any way. The types of these functions are the same and they behave exactly the same, no matter the definition method.
 
 ## Differences
+
+![Function Expression and Function Declaration differences image](/assets/images/2016/10/function-expression-vs-function-declaration-comparation-differences.png)
 
 But what makes them different then? The most prominent answer is the way they are defined.
 
@@ -399,7 +328,7 @@ function universeIs () {
 console.log(universeIs());
 ```
 
-Why the answer to it is `'enormous'`? The explanation resides in the way JavaScript interpreter functions. You see, when JavaScript parses the code, upon encountering a function declaration, it automatically moves it up, at the top of the scope it is defined. So, after JavaScript interpreter parsed the code, the code before actually running it looks like this:
+Why the answer to it is `'enormous'`? The explanation resides in the way JavaScript interpreter functions. You see, when JavaScript parses the code, upon encountering a function declaration, it automatically moves it up, at the top of the scope it is defined. So, after JavaScript interpreter parsed the code, it looks like this before running the code:
 
 ```javascript
 function universeIs () {
@@ -498,6 +427,8 @@ IIFEs prevent JavaScript functions and variables from affecting the global scope
 }());
 ```
 
+Note the opening parenthesis `(` before the `function` keyword. This parenthesis transforms the function from a function declaration into a function expression, as it is being defined not starting with a `function` keyword.
+
 ## Migrating one into the other
 
 Generally speaking, a function declaration can be very easily converted into a function expression when it either:
@@ -590,8 +521,8 @@ function universeIs () {
     var dimension;
     var dimension;
 
-    // As `dimension` is `undefined`, invoking it as a function gives the
-    // "TypeError: dimension is not a function"
+    // As `dimension` is `undefined` at this point, invoking it as a
+    // function gives the "TypeError: dimension is not a function"
     return dimension();
     
     // Both function expressions are unreachable
@@ -635,7 +566,7 @@ var universeSize = function () {
 console.log(universeSize);
 ```
 
-Here, the anonymous function expression can be invoked immediately after its definition and no errors will be thrown.
+Here, the anonymous function expression can be invoked immediately after its definition and no errors will be thrown. The result of the function execution is assigned to the `universeSize` variable.
 
 ## Conclusion
 
@@ -651,6 +582,144 @@ PS: There is actually a third type to declare a function using the `new Function
 
 Want to challenge yourself once more? You should do better on this one, as now you are armed with all the needed information!
 
-<div id="quizContent"></div>
+<div id="quizContentAfter"></div>
 
-<button id="nextQuestion" disabled="true" onclick="nextQuestionBtnHandler();">Next</button>
+<!-- <button id="nextQuestion" disabled="true" onclick="nextQuestionBtnHandler();">Next</button> -->
+
+<script type="text/javascript">
+'use strict';
+
+    var quizContentAfter = {
+        questions: [
+            {
+                body: '' + 
+'<span>What is the output of the following code?</span>' +
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">youAre</span> <span class="p">()</span> <span class="p">{</span>\n' +
+    '    <span class="kd">function</span> <span class="nx">status</span> <span class="p">()</span> <span class="p">{</span>\n' +
+        '        <span class="k">return</span> <span class="s1">"awesome"</span><span class="p">;</span>\n' +
+    '    <span class="p">}</span>\n' +
+    '    <span class="k">return</span> <span class="nx">status</span><span class="p">();</span>\n' +
+    '    <span class="kd">function</span> <span class="nx">status</span> <span class="p">()</span> <span class="p">{</span>\n' +
+        '        <span class="k">return</span> <span class="s1">"cool"</span><span class="p">;</span>\n' +
+    '    <span class="p">}</span>\n' +
+'<span class="p">}</span>\n' +
+'<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">youAre</span><span class="p">());</span>\n' +
+'</code></pre>\n' +
+'</div>',
+                answers: [
+                    'awesome',
+                    'cool',
+                    'undefined',
+                    'it will throw an error'
+                ],
+                correctAnswer: 1
+            },
+            {
+                body: '' + 
+                '<span>What will print the following code?</span>' + 
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">youAre</span><span class="p">());</span>\n' +
+'<span class="kd">function</span> <span class="nx">youAre</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'    <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'        <span class="k">return</span> <span class="s1">"awesome"</span><span class="p">;</span>\n' +
+'    <span class="p">};</span>\n' +
+'    <span class="k">return</span> <span class="nx">status</span><span class="p">();</span>\n' +
+'    <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'        <span class="k">return</span> <span class="s1">"cool"</span><span class="p">;</span>\n' +
+'    <span class="p">};</span>\n' +
+'<span class="p">}</span>\n' +
+'</code></pre>\n' +
+'</div>',
+                answers: [
+                    'awesome',
+                    'cool',
+                    'undefined',
+                    'it will throw an error'
+                ],
+                correctAnswer: 0
+            },
+            {
+                body: '' + 
+                '<span>What will print the following code?</span>' + 
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">youAre</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'    <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'        <span class="k">return</span> <span class="s1">"awesome"</span><span class="p">;</span>\n' +
+'    <span class="p">};</span>\n' +
+'    <span class="k">return</span> <span class="nx">status</span><span class="p">();</span>\n' +
+'    <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'        <span class="k">return</span> <span class="s1">"cool"</span><span class="p">;</span>\n' +
+'    <span class="p">};</span>\n' +
+'<span class="p">}</span>\n' +
+'<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">youAre</span><span class="p">());</span>\n' +
+'</code></pre>\n' +
+'</div>',
+                answers: [
+                    'awesome',
+                    'cool',
+                    'undefined',
+                    'it will throw an error'
+                ],
+                correctAnswer: 0
+            },
+            {
+                body: '' + 
+                '<span>What will print the following code?</span>' + 
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">youAre</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'    <span class="k">return</span> <span class="nx">status</span><span class="p">();</span>\n' +
+'    <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'        <span class="k">return</span> <span class="s1">"awesome"</span><span class="p">;</span>\n' +
+'    <span class="p">};</span>\n' +
+'    <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'        <span class="k">return</span> <span class="s1">"cool"</span><span class="p">;</span>\n' +
+'    <span class="p">};</span>\n' +
+'<span class="p">}</span>\n' +
+'<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">youAre</span><span class="p">());</span>\n' +
+'</code></pre>\n' +
+'</div>',
+                answers: [
+                    'awesome',
+                    'cool',
+                    'undefined',
+                    'it will throw an error'
+                ],
+                correctAnswer: 3
+            },
+            {
+                body: '' + 
+                '<span>What will print the following code?</span>' + 
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">youAre</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">"awesome"</span><span class="p">);</span>\n' +
+'<span class="p">})();</span>\n' +
+'</code></pre>\n' +
+'</div>',
+                answers: [
+                    'awesome',
+                    'undefined',
+                    'it will throw an error'
+                ],
+                correctAnswer: 0
+            },
+            {
+                body: '' + 
+                '<span>What will print the following code?</span>' + 
+'<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">youAre</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>\n' +
+'    <span class="k">return</span> <span class="s1">"cool"</span><span class="p">;</span>\n' +
+'<span class="p">}();</span>\n' +
+'<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">youAre</span><span class="p">);</span>\n' +
+'</code></pre>\n' +
+'</div>',
+                answers: [
+                    'cool',
+                    'undefined',
+                    'it will throw an error'
+                ],
+                correctAnswer: 0
+            },
+        ],
+        feedbackMessages: {
+            '<100': 'Looks like you are still not sure 100% of your answers. Do not worry though. Keep practicing and you will do it.',
+            '100': 'You did it! Now you can brag about the fact that you know the difference to anyone ;)'
+        },
+        callToAction: 'Liked it? Share it!.'
+    };
+    quiz('quizContentAfter', quizContentAfter)
+</script>
