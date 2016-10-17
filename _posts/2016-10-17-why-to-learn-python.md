@@ -86,7 +86,7 @@ It is the 7th biggest community on StackOverflow.
 
 It is also the most tagged language at GitHub with over 1.27 million repositories.
 
-All this means that Python is widely adopted and used and that you will definitely have a job if you learn Python. Besides that, you will easily find an answer to any problem that you might encounter, as there are lots of packages make available by Python community that may have among them that one package that already does what you want to achieve.
+All this means that Python is widely adopted and used and that you will definitely have a job if you learn Python. Besides that, you will easily find an answer to any problem that you might encounter, as there are lots of packages made available by Python community that may have among them that one package that already does what you want to achieve.
 
 ## Conclusion
 
