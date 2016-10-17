@@ -353,6 +353,17 @@ footer a {
     background-image: none;
 }
 
+#mc_embed_signup input.email.mailchimp-slim-input {
+  width: 100%;
+}
+
+.mailchimp-signup-form #mc_embed_signup input.button {
+  margin: 0;
+}
+
+.mailchimp-signup-form #mc_embed_signup form {
+  padding: 10px;
+}
 
 
 /******************************/
