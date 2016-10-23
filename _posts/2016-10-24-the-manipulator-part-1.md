@@ -11,7 +11,7 @@ summary: "In the first article of this series, you'll meet the second Hero of Ja
 
 permalink: /heroes/the-manipulator-part-1-intro/
 
-date: 2016-10-22 20:20:20
+date: 2016-10-23 20:20:20
 
 categories: [basics,operators]
 
