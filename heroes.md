@@ -74,7 +74,7 @@ summary: "Meet the Heroes of Programming, those who help make the lives of milli
                 <br />
                 <strong>Secret weapon: </strong>Toolbox
             </p>
-            <a class="button button-info-inversed" href="/heroes/the-manipulator-part-1/">More info</a>
+            <a class="button button-info-inversed" href="/heroes/the-manipulator-part-1-intro/">More info</a>
         </li>
         <li id="card-5">
             <h3>Unknown Hero</h3>
