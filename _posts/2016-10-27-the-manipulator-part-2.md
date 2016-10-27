@@ -11,7 +11,7 @@ summary: "In the last article of this series, you'll find out about the rest ope
 
 permalink: /heroes/the-manipulator-part-2/
 
-date: 2016-10-27 20:20:20
+date: 2016-10-27 09:20:20
 
 categories: [basics,operators]
 
