@@ -3,7 +3,7 @@ layout: post
 
 title: "Hero of the week: Alexandru Railean"
 
-meta_description: "Interview with a Python developer with an interest in criptography and information security — Alexandru Railean. Find out Alexandru's story about his journey on becoming a programmer and see ..."
+meta_description: "Interview with a Python developer with an interest in cryptography and information security — Alexandru Railean. Find out Alexandru's story about his journey on becoming a programmer and see ..."
 
 summary: "Read the interview with Alexandru Railean — a Python developer with an interest in cryptography and information security."
 
