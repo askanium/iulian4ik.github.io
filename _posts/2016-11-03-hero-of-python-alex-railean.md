@@ -7,7 +7,7 @@ meta_description: "Interview with a Python developer with an interest in cryptog
 
 summary: "Read the interview with Alexandru Railean — a Python developer with an interest in cryptography and information security."
 
-permalink: /interviews/python-heroes/alex-railean/
+permalink: /interviews/python/alex-railean/
 
 date: 2016-11-04 08:55:00
 
