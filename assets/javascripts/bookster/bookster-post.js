@@ -5,7 +5,14 @@ var booksterDataFiles = ['lotr-book1.json', 'karlson.json', 'dandelion-wine.json
 booksterDataFiles.forEach(function (dataFileName) {
 
   d3.json('/../../../../../../assets/data/bookster/' + dataFileName, function ( error, data ) {
-    window.bookster(data, dataFileName.split('.')[0]);
+    var bkstr = window.bookster(data, dataFileName.split('.')[0]);
+    bkstr.squares(document.getElementById(dataFileName.split('.')[0] + '-bookster'));
+    bkstr.treemaps(document.getElementById(dataFileName.split('.')[0] + '-treemap'), 1, [1]);
+
+    bkstr.linechart(document.getElementById(dataFileName.split('.')[0] + '-linechart'));
+
+    bkstr.piecharts(document.getElementById(dataFileName.split('.')[0] + '-piechart'), 1, [1]);
+    bkstr.piecharts(document.getElementById(dataFileName.split('.')[0] + '-piecharts-per-chunks'), 9, [3, 3, 3]);
   //   var treemapData = preProcessDataForTreemap(data);
   //   var booksterDiv = d3.select("#"+dataFileName.split('.')[0]+'-bookster');
 

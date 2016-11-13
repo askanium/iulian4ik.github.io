@@ -50,7 +50,14 @@ Let's follow the process step by step:
  
  The distribution of positive and negative words is even, confirming the rollercoaster comparison at the beginning of the post.
 
- For the sake of comparison, let's see some other book[po]sters:
+<div id="lotr-book1-linechart"></div>
+
+<div>
+	<div id="lotr-book1-piechart" style="width: 50%; display: inline-block;"></div>
+	<div id="lotr-book1-piecharts-per-chunks" style="width: 49%; display: inline-block;"></div>
+</div>
+
+For the sake of comparison, let's see some other book[po]sters:
 
 ## Dandelion Wine
 
@@ -63,6 +70,11 @@ The book is shorter than _The Lord of the Rings_, with 3 consecutive strong posi
 <div id="dandelion-wine-treemap"></div>
 
 The treemap also shows an almost even distribution, but this time with +5 and -5 words as well.
+
+<div>
+	<div id="dandelion-wine-piechart" style="width: 50%; display: inline-block;"></div>
+	<div id="dandelion-wine-piecharts-per-chunks" style="width: 49%; display: inline-block;"></div>
+</div>
 
 ## Karlsson
 
@@ -78,11 +90,23 @@ Even if this is a children's book, we can see that there are negatively charged 
 
 However, if we'll take a look at the distribution of positive vs negative emotions words, we see that there are much more positive that negative words, and there are not -4 and -5 words at all.
 
+<div>
+	<div id="karlson-piechart" style="width: 50%; display: inline-block;"></div>
+	<div id="karlson-piecharts-per-chunks" style="width: 49%; display: inline-block;"></div>
+</div>
+
 ## Bookster app
 
 For those of you who would like to create their own boosters, I've created an app that can be found [here](/bookster). Just select your text of choice in .txt format and the app will do everything for you. Enjoy!
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster/bookster.js"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster/bookster-post.js"></script>
+<script type="text/javascript" src="/assets/javascripts/bookster/bookster.js"></script>
+<script type="text/javascript" src="/assets/javascripts/bookster/bookster-post.js"></script>
 <!--<script type="text/javascript" src="{{ site.url }}/assets/javascripts/bookster-treemap.js"></script>-->
+<style type="text/css">
+	.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+</style>
