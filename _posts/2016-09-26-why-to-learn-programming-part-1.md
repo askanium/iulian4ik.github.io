@@ -57,7 +57,7 @@ So, as I already said, it is in demand. Companies look for software developers, 
 
 ## Money
 
-You can earn decent (well, depends on your definition of "decent" of course) money. A more exact number depends on where you are located. For instance, according to [StackOverflow Developer Survey Results from 2016](http://stackoverflow.com/research/developer-survey-2016#salary-per-occupation), the average yearly salary in USA is around $100-$110K, in UK it's around £45-£50K and in Eastern Europe it is around $20K. Note that these numbers are an average and the actual salary depends on many factors such as your experience, responsibilities, chosen language, etc. But overall, the numbers are close to these.
+You can earn decent (well, depends on your definition of "decent" of course) money. Toptal has recently released a ["Freelance Developer Hourly Rate Explorer"](https://www.toptal.com/developers/hourly-rate) that allows you to check the salary range for 30 different skill sets. Speaking about geographical areas, [StackOverflow Developer Survey Results from 2016](http://stackoverflow.com/research/developer-survey-2016#salary-per-occupation) shows the average yearly salary in USA is around $100-$110K, in UK it's around £45-£50K and in Eastern Europe it is around $20K. Note that these numbers are an average and the actual salary depends on many factors such as your experience, responsibilities, chosen language, etc. But overall, the numbers are close to these.
 
 ## Optimization
 
@@ -81,7 +81,7 @@ Ok, ok, that is all good. But I would like to address some things against learni
 
 ## Money
 
-Developers have high salaries. Toptal has recently released a ["Freelance Developer Hourly Rate Explorer"](https://www.toptal.com/developers/hourly-rate) that allows you to check the salary range for 30 different skill sets. But they are not the only ones who make good money. In case your focus is money, you could make an analysis of high paid jobs and choose the one that you like the most.
+Developers have high salaries, but they are not the only ones who make good money. In case your focus is money, you could make an analysis of high paid jobs and choose the one that you like the most.
 
 ## Sedentary lifestyle
 
