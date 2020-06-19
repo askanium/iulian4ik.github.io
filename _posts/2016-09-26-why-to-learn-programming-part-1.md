@@ -81,7 +81,7 @@ Ok, ok, that is all good. But I would like to address some things against learni
 
 ## Money
 
-Even though developers have high salaries, they are not the only ones who make good money. In case your focus is money, you could make an analysis of high paid jobs and choose the one that you like the most.
+Developers have high salaries. Toptal has recently released a ["Freelance Developer Hourly Rate Explorer"](https://www.toptal.com/developers/hourly-rate) that allows you to check the salary range for 30 different skill sets. But they are not the only ones who make good money. In case your focus is money, you could make an analysis of high paid jobs and choose the one that you like the most.
 
 ## Sedentary lifestyle
 
