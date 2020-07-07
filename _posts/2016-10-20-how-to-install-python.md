@@ -24,6 +24,8 @@ sharemessage: 'Wanna help other install Python on their computers? Share this ar
 
 Whether you have answered affirmatively to the question of [why to learn Python](/why-to-learn-python), the first thing you need to do is to install Python on your computer. This is what we will talk about in this article.
 
+But before that, I just wanted to let you know that I have written an excellent post on [How To Become An Expert At Anything](https://iuliangulea.com/blog/the-path-toward-mastery-how-to-become-an-expert/). If you would like to become an expert Python developer, make sure to check that post out!
+
 As I don't have a Mac yet, we'll address the installation process on Linux and Windows operating systems.
 
 Also, we'll consider installing Python 3.5 over Python 2.7, as sooner or later Python 2.7 won't be supported and you will have to switch to Python 3 anyway. Why then not to make it now? Besides that, Python 3 has many nifty features and generally speaking it is a better version of Python (it's the next version of Python, after all, so it should be better).
